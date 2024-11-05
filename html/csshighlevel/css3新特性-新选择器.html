@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div ul li:first-child {
+            color: blue;
+            background-color: aqua;
+        }
+         div ul li:nth-child(2n) {
+            color: blue;
+            background-color: black;
+        }
+        div p:first-of-type {
+            color: blueviolet;
+        }
+        input[type^=te] {
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1、属性选择器
+        input[属性]  如input[value]
+        input[属性=z值] input[type=password] 重点
+        input[属性^=xxx] 以某值开头
+        input[属性$=xxx] 以某值结尾
+        input[属性*=xxx] 含有某值
+        权重都是10
+     -->
+
+     <!-- 2、结构伪类选择器
+            E :first-child  ul li: first-child
+            E :last-child  ul li: last-child  
+            E :nth-child(n)  ul li: nth-child(2)   原理：所有元素都排列序号，看序号和标签不对应无效
+
+            n可以是公式
+            ul li: nth-child(even)/2n偶数 odd/2n+1奇数  n所有盒子 5n5倍数的盒子 
+            n+5从第五个元素开始+5 -n+5前五个往上数
+
+            指定类型
+            会针对类型，标签来排序号，和上面的相反
+            E: first of type 
+            E: last of type 
+            E: nth of type(n) section div:nth of type(2)
+    -->
+    <div >
+        <p>11</p>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>  
+        </ul>    
+    </div>
+    <input type="text">
+</body>
+</html>

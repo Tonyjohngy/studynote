@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        day2
+        指令修饰符 .
+        1 按键修饰符
+        @keydown.enter 按回车键
+        2 v-model修饰符
+        v-model.trim() 去空
+        v-model.number() 转数字
+        3 事件修饰符
+        @事件名.stop() 阻止冒泡
+        @事件名.prevent()  阻止默认行为
+
+        4 v-bind对于样式控制的增强 - 操作class
+        :class="{属性1:布尔值,属性2:布尔值}"
+        键就是类名，值是布尔值。如果值为true，有这个类，否则没有这个类
+        可用表达式代替
+        适用场景：一个类名，来回切换
+
+        :class="[属性1,属性2]"
+
+        5 v-bind对于样式控制的增强 - 操作style
+        <div class="box" :style="{ CSS属性名1: CSS属性, CSS属性名2: CSS属性}"></div>
+        适用场景：某个具体属性的动态设置
+
+        6 v-model应用于其他表单元素
+        常见的表单元素都可以用v-model绑定关联 -> 快速获取或设置表单元素的值
+        他会根据控件类型自动选取正确的方法来更新元素
+
+        输入框 input:text -> value
+        文本域 textarea -> value
+        复选框 input:checkbox -> checked
+        单选框 input:radio -> checked
+        下拉菜单 select -> value
+
+        计算属性
+        基于现有的数据，计算出来的新属性。因爱的数据变化，自动计算
+        定义
+        computed: {
+            计算属性名(){
+                基于现有数据，编写求值逻辑
+                return 结果
+            }
+        }
+        使用
+        {{计算属性名}}
+
+        computed计算属性 vs methods方法
+        computed计算属性
+            作用：封装了一段对于数据的处理，求得一个结果
+            缓存特性：计算属性会对计算出来的结果缓存，再次使用直接读取缓存，依赖项变化了，会自动重新计算 -> 并再次缓存
+            methods方法：
+            作用：给实例提供一个方法，调用以处理业务逻辑
+
+        计算属性简写不能修改只能查
+        计算属性的完整写法：
+        computed: {
+            计算属性名(){
+                    get(){
+                        一段代码逻辑（计算逻辑）
+                        return 结果
+                    },
+                    set(修改的值){
+                        一段代码逻辑（修改逻辑）
+                    }
+                }
+            }
+        12.watch侦听器（监视器）
+        作用：监听数据变化，执行一些业务逻辑或异步操作
+            data:{
+                words:'苹果',
+                obj:{
+                    words:'苹果'
+                }
+            },
+
+            watch: {
+                数据属性名(newValue, oldValue) {
+                    一些业务逻辑 或 异步操作
+                },
+                '对象.属性名'(newValue, oldValue) {
+                    一些业务逻辑 或 异步操作
+                }
+                
+            }
+
+            ps与页面渲染无关的数据可以直接this.属性，不用再data中添加，优化性能
+            多个属性的时候
+            data:{
+                obj:{
+                    words:'苹果',
+                    lang:'italy'
+                }
+            },
+
+            watch: {
+                数据属性名(newValue, oldValue) {
+                    deep: true,//深度监视
+                    immediate:true,//默认第一次触发
+                    handler(newValue){
+                        console.log(newValue)
+                    }
+                }
+            }
+
+            ps
+            JSON.stringify 方法用于将 JavaScript 对象或值转换为 JSON 字符串。
+            JSON.prase 方法用于将 json 字符串或值转换为 JavaScript 对象
+
+     -->
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位</title>
+    <style>
+        .box {
+            width: 1200px;
+            height: 1200px;
+            margin: 0 auto;
+            background-color: aqua;
+        }
+
+        .fix {
+            position: fixed;
+            /* 走一半浏览器 */
+            left: 50%;
+            top: 0;
+            /* 走版心一半 */
+            margin-left: 600px;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1、可以固定到屏幕某个位置
+        2、定位可以让某个盒子自由在固定屏幕位置，并且可以压过其他盒子 -->
+
+        <!-- 定位组成
+            将盒子定在某一个位置，所以定位也摆放盒子，按照定位的方式移动盒子
+            定位 = 定位模式（指定元素在文档中的定位方式） + 边偏移（决定该元素的最终位置）
+
+            定位模式：
+            静态static  默认没有定位 还是标准流 不用 后三个较多用 
+            相对relative  相对原来的位置(自恋型) 
+                          原来的标准流继续占有，后面的盒子仍以标准流的方式对待它（不脱标，继续保留位置）
+
+            决定absolute  没有父元素或相对已经定位的父元素，没有就是html
+                          父元素没有定位就找最近一级定位的祖先元素 爷爷
+                          独对位置是不保留位置，脱标
+                          子级绝对定位，父级相对定位，因为绝对定位不占空间
+                          
+            固定定位fixed  固定于浏览器可视区
+                            跟父元素无关
+                            不随滚动而滚动
+                            固定定位不占有原先位置
+
+                    固定版心侧面
+
+
+            粘性sticky  相对和固定定位结合
+
+            边偏移 top right bottom left
+
+            叠放次序 z-index控制次序
+            z-index: 1;数值越大越在上面
+            数字不能加单位
+            只有定位盒子才有这个属性
+            属性值相同按书写书顺序
+
+            盒子居中：
+            加了绝对定位是不能通过margin来居中
+            可以通过left 50% 盒子宽一半即可 -100px
+
+            定位特殊特性
+            行内元素添加绝对或者固定定位，可直接设置高度和宽度
+            块级元素不加高度宽度则默认内容大小
+
+
+            浮动不会压住标准流的文字或者图片，但绝对或固定定位会，可做文字环绕
+        -->
+
+        <div class="box"></div>
+        <div class="fix"></div>
+</body>
+</html>

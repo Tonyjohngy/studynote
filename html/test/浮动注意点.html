@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动注意点</title>
+    <style>
+             /* 清除浮动 
+             1、额外标签也称为隔墙法，是W3C推荐的做法 在后面块级空标签加clear: both左右清除 通俗易懂但结构性差
+             2、父级添加overflow属性   overflow设置hidden auto scroll 代码简洁
+             3、父级添加after伪元素   :after 额外标签加强版 结构会更简单
+             4、父级添加双伪元素 
+             */
+            .clearfix:after {
+                content: "";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+             }
+            
+             .clearfix{
+                /* IE6,7专有 */
+                zoom: 1;
+             }
+            /* 双伪元素 */
+             .clearfix:before,
+            .clearfix:after {
+                content: "";
+                display: table;
+            }
+ 
+            .clearfix:after {
+                clear: both;
+            }
+    
+            .clearfix {
+                *zoom: 1;
+            }
+            
+    </style>
+
+</head>
+<body>
+    <!-- 1、先用标准流的父元素排列上下位置，之后内部子元素采取浮动排列左右位置
+         2、浮动盒子只会影响后面的标准流，不会影响前面的标准流
+         3、子盒子很多，父元素的高度不能定死，但子盒子浮动又不占有高度，下面的标准流
+         可能会被覆盖，所以要清除浮动
+    -->
+
+</body>
+</html>

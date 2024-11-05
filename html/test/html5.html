@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>html5练习1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+         <!-- display:block让旧版浏览器正确显示元素 -->
+        <!-- 自定义元素 -->
+        
+        <script>
+            document.createElement("m");
+            var can = document.getElementById("myCanvas");
+            var ctx = can.getContext("2d");
+            ctx.fillStyle = "#ff0000";
+            ctx.fillRect(0, 0, 50, 75);
+        </script>
+        <style>
+            m {
+                display: block;
+                background-color: green;
+                padding: 50px;
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+       <m>my green</m>
+       <!-- <iframe src="https://www.baidu.com" frameborder="0" width="500px" height="500px"></iframe> -->
+       <video width="400" height="250" controls>
+            <source src="\video\视频.mp4" type="video/mp4">
+            视频
+       </video>
+
+       <audio controls>
+            <source src="\video\蝴蝶.mp4" type="audio/mp4">
+            音乐
+       </audio>
+       <br>
+       <canvas id="myCanvas" width="200" height="100" style="border: 1px solid #ff0000;"></canvas>
+    </body>
+</html>

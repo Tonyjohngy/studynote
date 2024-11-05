@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            color: black;
+        }
+        /* 未访问的链接 没点击的链接 */
+        a:link {
+            color: #ffe600;
+            text-decoration: none;
+        }
+        /* 点击过访问过的链接 */
+        a:visited {
+            color: #fc0606;
+        }
+        /* 鼠标经过 */
+        a:hover {
+            color: aqua;
+        }
+        /* 鼠标按下没松开 */
+        a:active {
+            color: blue;
+        }
+        /* 为确保生效要按照LVHA的顺序声明 */
+        /* a标签要单独配置样式，不让不生效 */
+        /*获取光标input元素  */
+        input:focus {
+            background-color: rgb(255, 0, 93);
+        }
+    </style>
+</head>
+<body>
+    <a href="#" >213</a>
+    <a href="https://www.baidu.com" >1</a>
+    <a href="789" >3</a>
+    <input type="text">
+</body>
+</html>

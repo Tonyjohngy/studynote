@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .logo {
+            display: block;
+            position: relative;
+            width: 55px;
+            height: 55px;
+            background-color: #ff9100;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .logo::before,.logo::after {
+            position: absolute;
+            content: "";
+            background-color: #ff9100;
+            width: 55px;
+            height: 55px;
+            transition: all .3s;
+            top: 0;
+            left: 0;
+        }
+
+        .logo::before {
+            margin-left: 0;
+            background-image: url(images/mi-logo.png);
+            background-size: cover;
+        }
+
+        .logo::after {
+            margin-left: 55px;
+            background-image: url(images/mi-home.png);
+            background-size: contain;
+        }
+
+        .logo:hover::before {
+            margin-left: -55px;
+        }
+
+        .logo:hover::after {
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="#" title="小米官网"></a>
+    </div>
+</body>
+</html>

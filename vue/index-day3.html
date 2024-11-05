@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        table th,td {
+            border: 1px solid black;
+        }
+        #main{
+            width: 600px; 
+            height: 400px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="app">
+        <input type="text" class="inp">
+        <!-- 阻止表单默认行为 -->
+        <form @submit.prevent>
+            <input v-model.trim="name" type="text" placeholder="消费名称">
+            <input v-model.number="price" type="text" placeholder="消费价格">
+            <button @click="add()">添加账单</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>名称</td>
+                    <td>价格</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in list" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td><button @click="del(item.id)">删除</button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">总计：{{total}}</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div id="main">
+            
+        </div>
+    </div>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/echarts/dist/echarts.min.js"></script>
+   <script>
+    
+    const app = new Vue({
+        el:'#app',
+        data:{
+            list:[],
+            name:'',
+            price:'',
+            option : {
+            title: {
+                text: '饼状图',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b} : {c} ({d}%)'
+            },
+            legend: {
+                left: 'center',
+                top: 'bottom',
+                data: [
+                
+                ]
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                mark: { show: true },
+                dataView: { show: true, readOnly: false },
+                restore: { show: true },
+                saveAsImage: { show: true }
+                }
+            },
+            series: [
+                {
+                name: 'Radius Mode',
+                type: 'pie',
+                radius: [20, 80],
+                center: ['25%', '50%'],
+                roseType: 'radius',
+                itemStyle: {
+                    borderRadius: 5
+                },
+                label: {
+                    show: false
+                },
+                emphasis: {
+                    label: {
+                    show: true
+                    }
+                },
+                data: [
+                    
+                ]
+                },
+                
+            ]
+            },
+        },
+        methods: {
+            async del(id){
+                const res = await axios.delete(`https://applet-base-api-t.itheima.net/bill/${id}`)
+                this.getList()
+            },
+            async getList(){
+                const res = await axios.get('https://applet-base-api-t.itheima.net/bill',
+                {params: {
+                        creator:'tony'
+                    }
+                })
+                this.list = res.data.data
+                this.updateChart()
+            },
+            updateChart() {
+                this.myChart.setOption({
+                    legend: {
+                        data: this.list.map(item=>item.name)
+                    },
+                    series: [{
+                        data:this.list.map(item=>({value: item.price,name:item.name}))
+                    }
+                    ]
+                })
+            },
+            async add(){
+                if (!this.name) {
+                    alert('请输入正确名字')
+                    return
+                }
+
+                if (typeof this.price !== 'number' ) {
+                    alert('请正确输入价格')
+                    return
+                }
+                try {
+                const res = await axios.post('https://applet-base-api-t.itheima.net/bill',
+                {
+                    creator:'tony',
+                    name:this.name,
+                    price:this.price
+                })
+                console.log(this.name,this.price);
+                this.getList()
+                this.name=''
+                this.price=''
+            }catch (error) {
+                    console.error('Error adding bill:', error);
+                }
+               
+            }
+        },
+        created(){
+            this.getList()
+        },
+        mounted() {
+            document.querySelector('.inp').focus()
+            // 初始化echarts
+            var chartDom = document.getElementById('main')
+            this.myChart = echarts.init(chartDom)
+            this.myChart.setOption(this.option)
+        },
+        
+        
+        computed:{
+            total(){
+                return this.list.reduce((sum,item)=> sum + item.price,0) 
+            }
+        }
+    })
+   </script>
+</body>
+</html>

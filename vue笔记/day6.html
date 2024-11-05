@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        1 路由进阶
+            路由的封装分离
+            好处：拆分模块，利于维护
+            步骤：
+
+            新建router文件夹，并在里面新建文件index.js
+            再main.js中将跟路由有关的代码剪切到index.js中
+            再在main.js中引入router
+
+
+        2 声明式导航
+        声明式导航 - 导航链接
+        需求：实现导航高亮
+        router-link代替a
+
+        好处：
+
+            能跳转，配置to属性指定路径（必须）。本质还是a标签，to前缀无需"#"
+            能高亮，默认就会提供高亮类名，可以直接设置高亮样式
+        两个类名实现高亮 
+        router-link-active 模糊匹配
+        router-link-exact-active 精确匹配
+        自定义类名，简写
+        const router = new VueRouter({
+        routes: [
+            { path: '/find', component: Find },
+            { path: '/my', component: My },
+            { path: '/friend', component: Friend },
+        ],
+        linkActiveClass:'active',
+        linkExactActiveClass:'exact-active'
+        })
+        声明式导航 - 跳转传值
+        1、查询参数传参
+        <router-link to="/path?参数名=值">我是router-link</router-link>
+        $route.query.参数名 接收
+
+        2、动态路由传参 适用于多个参数，更优雅
+        const router = new VueRouter({
+            routes: [
+                { path: '/search/:words', component: Search }
+            ]
+            })
+            可以没有值的设置
+            { path: '/search/:words?', component: Search }
+            导航配置
+            <router-link to="/path/参数值">我是router-link</router-link>
+            接收参数
+            $route.params.参数名
+
+            2.Vue路由
+
+            Vue路由 - 重定向
+            设置默认首页，并且不为空白
+            const router = new VueRouter({
+            routes: [
+                { path: '/A', redirect: '/B'},//匹配到A路径时，自动跳转到B路径
+            ]
+            })
+            {path:'/',redirect:'/find'},
+
+            404
+            作用：当路径找不到匹配时，给个提示页面
+            位置：配在路由最后
+            语法：path:“*”（任意路径）
+
+            const router = new VueRouter({
+            routes: [
+                { path: '/', redirect: '/home'},
+                { path: '/home', component: Home },
+                { path: '/search/:words?', component: Search },
+                { path: '*', component: NotFound }//配置在最后一条
+            ]
+            })
+
+            Vue路由 - 模式设置
+            默认路径有# 是hash模式
+            hash路由（默认）
+            例如：http://localhost/8080/#/home
+            history路由（常用）
+            例如 http://localhost/8080/home（以后上线需要服务器端支持）
+
+            设置方式
+            const router = new VueRouter({
+                mode:'history',
+                })
+
+            3.编程式导航
+                编程式导航 - 基本跳转
+                编程式导航：用js代码来进行跳转
+
+               1 path路径跳转（简易方便）
+                //简易写法
+                this.$router.push('路由路径')
+
+                //完整写法
+                this.$router.push({
+                    path:'路由路径'
+                })
+
+                2 name命名路由跳转（适合path路径长的场景）
+                this.$router.push({
+                    name: '路由名'
+                })
+
+                编程式导航 - 跳转传参
+
+                3 path路径跳转
+                 query传参
+
+                 this.$router.push('/路径?参数名1=参数值1&参数名2=参数值2')
+                    //或者
+                    this.$router.push({
+                        path:'/路径',
+                        query: {
+                            参数名1: '参数值1',
+                            参数名2: '参数值2'
+                        }
+                    })
+
+                    动态路由传参（需要配动态路由）
+
+                    this.$router.push('/路径/参数值1')
+                    //或者
+                    this.$router.push({
+                        path: '/路径/参数值'
+                    })
+
+                    ps name和path冲突会使用path
+                    使用path的时候参数要放在路径后面而且用·${}·的形式嵌套，
+                    用params或者query,就用name来定位组件
+                4.keep-alive
+                        keep-alive:Vue的内置组件，包裹动态时，可以缓存
+                        优点：组件切换时，把切换出去的组件保留在内存中（提升性能）
+                        keep-alive的三个属性（了解）
+
+                        include：组件名数组，只有匹配的组件会被缓存
+                        exclude：组件名数组，任何匹配的组件都不会背缓存
+                        max：最多可以缓存多少组件实例
+
+                    <template>
+                        <div class="h5-wrapper">
+                            <keep-alive :include="['组件名']">
+                            <router-view></router-view>
+                            </keep-alive>
+                        </div>
+                    </template>
+
+     -->    
+</body>
+</html>

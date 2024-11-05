@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精灵图</title>
+    <style>
+        .m {
+            height: 60px;
+            width: 60px;
+            margin: 100px auto;
+            background-color: aqua;
+            background: url(images/sprites.png) no-repeat -182px 0;
+        }
+
+        .name {
+            height: 200px;
+            margin: 200px 100px;
+            background-color: gray;
+        }
+        span {
+            display: inline-block;
+            float: left;
+        }
+        .name .t {
+            width: 102px;
+            height: 111px;
+            background: url(images/abcd.jpg) no-repeat -367px -416px;
+        }
+        .name .o {
+            width: 110px;
+            height: 111px;
+            background: url(images/abcd.jpg) no-repeat -370px -277px;
+        }
+        .name .n {
+            width: 114px;
+            height: 111px;
+            background: url(images/abcd.jpg) no-repeat -253px -275px;
+        }
+        .name .y {
+            width: 110px;
+            height: 111px;
+            background: url(images/abcd.jpg) no-repeat -363px -556px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        有效减少服务器接受和请求的次数，提高页面加载速度
+
+        ***精灵图的移动是背景图！！！
+     -->
+
+     <div class="m">
+    </div>
+
+    <div class="name">
+        <span class="t"></span>
+        <span class="o"></span>
+        <span class="n"></span>
+        <span class="y"></span>
+    </div>
+</body>
+
+</html>

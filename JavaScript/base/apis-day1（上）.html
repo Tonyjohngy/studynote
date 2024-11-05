@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+<body>
+    
+    <!-- 
+        1、Web APIS
+        作用：使用js去操作HTML和浏览器
+        分类：DOM（文档对象模型）和BOM（浏览器对象模型）
+
+        DOM
+        操作网页内容
+        DOM树：直观的体现标签和标签之间的关系
+
+        DOM对象：浏览器会根据html标签生成js对象
+        对象的所有属性都可以找到
+        可以修改并映射回去
+
+        2、获取dom对象
+        查询获取Dom元素
+
+        选择第一个元素，没有匹配到就返回为空
+        document.querySelector('css选择器')
+        该标签所有元素，但有成都没有
+        querySelectorAll
+
+     -->
+     <div class="div1">222</div>
+     <div class="div2">222</div>
+     <div id="nav">222</div>
+     <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+     </ul>
+
+     <h4>抽奖活动</h4>
+     <div class="yi"></div>
+     <div class="er"></div>
+     <div class="san"></div>
+
+     <img src="" alt="">
+
+     <script>
+        
+        const arr = ['周杰伦','刘德华','周星驰','张学友']
+        function chou() {
+                if (arr.length === 0){
+                    return '空'
+                }
+                const i = Math.floor(Math.random() * (arr.length))
+                const element = arr[i];
+                arr.splice(i,1)
+                return element
+        }
+        const yi = document.querySelector("div[class='yi']")
+        const er = document.querySelector("div[class='er']")
+        const san = document.querySelector("div[class='san']")
+
+        yi.style.color = 'red'
+        yi.style.fontSize = '17px'
+        const one = chou()
+        yi.innerHTML = `一等奖：${one}`
+
+        er.style.fontSize = '12px'
+        const two = chou()
+        er.innerHTML = `二等奖：${two}`
+
+        san.style.fontSize = '8px'
+        const third = chou()
+        san.innerHTML = `三等奖：${third}`
+
+        const div = document.querySelector('div')
+        const nav = document.querySelector('#nav')
+
+        // 即使是要偶数，但也是第一个
+        const n = document.querySelector('ul li:nth-child(2n)')
+        // n.style.color = 'blue'
+        nav.style.color = 'red'
+        // nav.innerText = '2143314'
+        nav.innerHTML = '<strong>我的<strong>'
+
+
+        // 匹配多个 返回的不是单个节点，而是一个nodelist对象集合，而且是一个伪数组：有长度但没有索引，
+        // 但没有pop push等数组,其实本质还是一个元素，要遍历
+        const a = document.querySelectorAll('ul li')
+        // for (const i in a) {
+        //     i.style.color = 'red'
+        // }
+
+        // 用foreach
+        a.forEach(li => {
+            li.style.color = 'green'
+        });
+
+        /* 
+            其他获取dom元素方法
+        */
+        //    根据id获取元素
+    //    document.getElementById()
+        //根据标签名字获取一类元素    
+    //    document.getElementsByTagName('div')
+        //    根据类名获取所有元素 多个空格隔开 返回一个数组
+    //    document.getElementsByClassName()   
+        //    获取特殊元素
+        // document.body()
+        //获取HTML元素
+        // document.documentElement()
+        // 通过name属性获取一组元素
+    //    document.getElementsByName()
+       /* 
+       3、操作元素内容
+       3.1 innerText属性，存文本，不解析标签
+
+       */
+    //    nav.innerText = '2143314'
+        /*3.2 innerHtml 会解析标签，多标签建议使用模板字符  */
+        // nav.innerHTML = '<strong>我的<strong>'
+
+
+    </script>
+
+</body>
+</html>

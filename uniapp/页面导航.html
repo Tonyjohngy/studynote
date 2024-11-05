@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        页面导航
+        页面之间的跳转
+        有两种方式 1、 a 链接
+                  2、 location.href
+
+        小程序实现两种方式
+        1、声明式导航
+        页面声明一个navigation导航组件
+        点击组件跳转
+        属性
+        url = "页面地址"
+        导航到tarBar页面
+        open-type="switchTab" 跳转方式必须是switchTab
+        导航到非tarBar页面
+        open-type="navigate" 跳转方式必须是navigate
+
+        后退导航
+        open-type="navigateBack" 
+        delta得知必须是数字 表示后退的层级 默认一级可省略
+
+        2、编程式导航
+        调用小程序导航api
+        导航到tabBar页面
+        wx.switch({
+            url:''
+        })
+        导航到非tarBar页面
+        wx.navigate({
+            url
+        })
+        后退
+        wx.navigateBack({
+            delta:1; 可不写
+        })
+
+        导航传参
+        1、声明式 页面路径后面携带的参数
+        url?username=lili&age=20
+        2、编程式 一样在url操作
+        3、onload 接受导航参数 options获取
+
+        下拉刷新
+        下拉刷新页面
+        全局开启
+        局部开启(推荐) enablePullDownRefresh 为 true
+
+        拉下刷新的样式
+        backgroundColor 窗口颜色16进制
+        backgroundTextStyle dark/light
+
+        监听页面下拉刷新事件
+        .js文件中，通过onPullDownRefresh()函数监听下拉刷新事件
+
+        停止下拉刷新效果
+        wx.stopPullDownRefresh()
+
+        下拉触底
+        上拉滑动加载更多事件，实现分页
+        onReachBottom:function(){}
+
+        上拉触底的距离
+        .json配置文件通过onReachBottomDistance属性设置，默认50px
+
+        添加loading提示效果
+        wx.showLoading({
+            title:""
+        })
+        加载完隐藏
+        complete :()=>{
+        wx.hideLoading()
+      }
+      数据节流控制
+      1 在data中定义isloading节流阀
+      2 在getColor()方法中修改isloading节流阀的值
+      3 在onReachBottom中判断节流阀的值，从而对数据请求进行节流控制
+
+      自定义编译模式
+      直接接入要编译的页面
+
+      小程序生命周期
+      分为
+      1、应用生命周期
+      小程序启动-》运行-》销毁
+      2、页面生命周期
+      页面的加载-》渲染-》销毁
+      应用包含页面
+
+      生命周期函数
+      小程序的内置函数，伴随生命周期，自动按次序执行
+      作用：在特定时间点执行操作
+      注意：生命周期强调时间段，生命周期函数强调时间点
+
+      分为
+      应用
+      App({
+        小程序初始化，可初始化数据，全局一次
+        onLauch:function(){}
+        后台进入前台
+        onShow
+        前台进入后台
+        onHide
+      })
+      页面
+      5个
+      Page({
+        onLoad（options） 监听页面加载，一个页面只会加载  options获取传递过来的参数
+        onShow  监听页面显示
+        onReady 监听页面渲染完成后，只有一次
+        onHide  监听页面隐藏
+        onUnload    监听页面卸载，只有一次
+      })
+
+      WXS
+      小程序的脚本语言
+      帮助渲染wxml结构
+      应用：过滤器
+      wxs和js的区别
+      1 wxs有自己的数据类型 number string boolean object function array date regexp
+      2 wxs不支持ES6的语法 不支持let const 解构赋值 展开运算符 箭头函数 对象属性简写 等
+       支持var定义变量，普通function
+      3 wxs遵循CommonJS规范
+      module函数
+      require（）函数
+      module.exports对象
+
+      基本用法
+      1 内嵌wxs脚本
+      使用wxs标签
+      <view>{{m1.toUpper(username)}}</view>
+        <wxs module="m1">
+            module.exports.toUpper = function (str) {
+                return str.toUpperCase()
+            }
+        </wxs>
+       2 定义外联wxs脚本
+        编写在.wxs后缀文件中
+        使用要引入 
+        <wxs src="../../utils/tools.wxs" module="m2"></wxs>
+
+       3 js和wxs很多相同
+       4 wxs中的函数不能作为组件事件回调函数
+       bindtap="m1.toUpper()"错误的
+       5 隔离性
+       1 wxs不能调用js中定义的函数
+       2 不能调用小程序api
+       6 性能好
+
+       判断下页没有数据
+       页码值*每页显示多少条数据>=总数据条数
+     -->
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        video {
+            width: 100%;
+            height: 500px;
+        }
+
+        input[search] {
+            
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+        头部标签header
+        导航拦 nav
+        文章 article
+        定义文档某个区域 section
+        侧边栏 aside
+        尾部 footer
+        这些标签针对搜索引擎
+        可以使用多次
+        ie9需要把他们转换成块元素
+        在移动端有更好兼容性
+     -->
+
+     <!-- 
+        多媒体标签
+        video视频 尽量使用MP4
+        常见属性：
+        autoplay自动播放
+        controls控件
+        width
+        height
+        loop循环播放
+        poster加载封面
+        muted静音
+      -->
+      <video src="video/mix3.mp4" controls="controls" autoplay="autoplay" poster="images/sprites.png" loop="loop">
+      </video>
+      <!-- 
+        音频
+       和视频一致但音频无法静音可用js处理
+       -->
+       <!-- 
+        表单验证 input新功能
+        type = url number tel search time 等 在form中使用
+
+        required不能为空
+        placeholder 提示信息
+        multiple 多选文件提交 input type=file中使用
+        autofocus自动聚焦
+        autocomplete= "on/off" 浏览器保存之前输入内容 要有name属性而且提交成功
+
+        input::placeholder选择元素
+        -->
+        <input type="search" placeholder="搜索一下" required="required" autofocus="autofocus">
+        <input type="button"  value="搜索">
+        
+        <input type="file" multiple="multiple">
+
+        <form action="#" method="get">
+            <ul>
+                <li><input type="number"></li>
+                <li><input type="email" name="" id=""></li>
+                <li><input type="tel"></li>
+                <li><input type="search"></li>
+                <li><input type="time"></li>
+            </ul>
+            <input type="submit" value="提交">
+        </form>
+    </body>
+</html>

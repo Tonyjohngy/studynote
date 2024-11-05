@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        ajax就是js这个语言和服务端交互手段（js和xml）
+
+        请求同步
+        发出请求等待结果，才能解除假死状态继续执行下面代码。（排队执行）
+
+        异步请求
+        浏览器发出请求时，还可以继续做其他事
+        async = true
+
+        优势
+        不影响用户体验
+        减轻服务端和贷款的负担
+
+        具体执行流程
+        将PHP页面从服务器取出，
+        取出后转成json格式，后利用ajax，字符串返还给前台，
+        JSON.parse()解析循环到页面上，
+
+        ajax的使用
+        1、内置构造函数来创建Ajax对象
+        2、使用Ajax对象发送和接收请求
+        
+        特点
+        无需刷新页面便可向服务器传输或读写数据（无刷新更新页面），
+        这特点主要得益于XMLHTTP组件XMLHTTPRequest对象
+
+        ajax状态码
+        readyState
+        0：没有初始化
+        1：完成配置信息，open执行之后
+        2：send执行完毕
+        3：正在解析响应内容
+        4：解析完毕客户端正在使用
+
+        xhr.state 验证http状态码 
+        200——299请求成功
+        3xx 重定向
+        4xx 客户端出错
+        5xx 服务端问题
+
+        readyStateChange事件
+        专门来监听Ajax对象readyState值的变化的行为
+        一旦变化触发事件
+        可以来监听事件readyState是不是到4
+
+
+        get和post的区别
+        get会更快大部分适用，
+        post请求：
+        1、无法使用缓存文件（更新服务器上的文件或数据库）
+        2、向服务器发送大量数据（post没有数据量限制）
+        3、发送包含未知字符的用户输入，post比get更稳定可靠
+     -->
+     <script>
+        const xhr = new XMLHttpRequest()
+        // 初始化
+        xhr.open('get','php/data.php')
+        // 发送
+        xhr.send()
+        console.log(xhr.readyState);
+
+        xhr.onreadystatechange = function(){
+
+            if (xhr.readyState === 4 && /^2\d{2|$/.test(xhr.status)) {
+
+                
+            }
+        }
+        
+     </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app {
+            width: 800px;
+            margin: 0 auto;
+        }
+        header {
+            overflow: hidden;
+            border-radius: 1px solid black;
+            border-radius: 15px;
+        }
+        .banner{
+            width: 100%;
+            height: 300px;
+            
+        }
+        table {
+            outline: 1px solid black;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        .active{
+            background-color: #999;
+        }
+        tbody img {
+            width: 40px;
+            height: 40px;
+        }
+        .header img {
+            height: 300px;
+        }
+    </style>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <header>
+            <img class="banner" src="E:/vscode code/vue/static/img/fruit.jpg" alt="水果">
+        </header>
+        <div class="main">
+            <div class="main-hd">
+                <h3>购物车</h3>
+            </div>
+            <div class="main-bd">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>选中</th>
+                            <th>图片</th>
+                            <th>单价</th>
+                            <th>个数</th>
+                            <th>小计</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+
+                    <tbody v-if="fruitList.length>0">
+                        <tr v-for="item in fruitList" :key="item.id" :class="{active:item.isChecked === true}" >
+                            <td><input v-model="item.isChecked" type="checkbox"></td>
+                            <td><img :src="item.icon" alt=""></td>
+                            <td>{{item.price}}</td>
+                            <td>
+                                <button @click="add(item.id)">+</button> 
+                                {{item.num}} 
+                                <button @click="sub(item.id)">-</button>
+                            </td>
+                            <td>{{item.price * item.num}}</td>
+                            <td><button @click="del(item.id)">删除</button></td>
+                        </tr>
+                    </tbody>
+                    <tbody v-else>
+                        <tr>
+                            <td colspan="6">购物车为空</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"><span>全选：<input v-model="isAllCheck" type="checkbox"></span></td>
+                            <td colspan="2"><span>总计：{{total}}</span></td>
+                            <td colspan="2"><button >总数 {{totalNum}}</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const arr =  [
+                    {
+                    id: 1,
+                    icon: 'E:/vscode code/vue/static/img/火龙果.png',
+                    isChecked: true,
+                    num: 2,
+                    price: 6,
+                    },
+                    {
+                    id: 2,
+                    icon: 'E:/vscode code/vue/static/img/荔枝.png',
+                    isChecked: false,
+                    num: 7,
+                    price: 20,
+                    },
+                    {
+                    id: 3,
+                    icon: 'E:/vscode code/vue/static/img/榴莲.png',
+                    isChecked: false,
+                    num: 3,
+                    price: 40,
+                    },
+                    {
+                    id: 4,
+                    icon: 'E:/vscode code/vue/static/img/鸭梨.png',
+                    isChecked: true,
+                    num: 10,
+                    price: 3,
+                    },
+                    {
+                    id: 5,
+                    icon: 'E:/vscode code/vue/static/img/樱桃.png',
+                    isChecked: false,
+                    num: 20,
+                    price: 34,
+                    },
+                ]
+        const app = new Vue({
+            el:'#app',
+            data: {
+                     // 水果列表
+                fruitList: JSON.parse(localStorage.getItem("list")) || arr
+            },
+            computed:{
+                isAllCheck:{
+                    get(){
+                        return this.fruitList.every(item => item.isChecked)
+                    },
+                    set(value){
+                        this.fruitList.map(item => item.isChecked = value)
+                    }
+                },
+                totalNum(){
+                   const list = this.fruitList.filter(item => item.isChecked === true)
+                   return list.reduce((sum,item) => sum+item.num ,0)
+                },
+                total:{
+                    get(){
+                        const list = this.fruitList.filter(item => item.isChecked === true)
+                        return list.reduce((sum, item) => sum + item.price * item.num,0 )
+                    },
+                    set(){}
+                },
+            },
+            methods: {
+                del(id){
+                    this.fruitList = this.fruitList.filter(item => item.id != id)
+                },
+                sub(id){
+                    const f = this.fruitList.find(item => item.id === id)
+                    f.num--
+                },
+                add(id){
+                    const f = this.fruitList.find(item => item.id === id)
+                    f.num++
+                }
+            },
+            watch:{
+                fruitList:{
+                    deep:true,
+                    handler(newValue){
+                        localStorage.setItem("list",JSON.stringify(newValue))
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

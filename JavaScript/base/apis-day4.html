@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        BOM 浏览器模型 
+        window：是全局对象，js的顶级对象
+        document、alert、console.log（）都是window的属性
+        所有var定义在全局作用域的变量和函数都是window对象的属性和方法
+        window对象调用属性和方法时window可以省略
+
+        定时器 延时函数
+        让代码延迟执行  
+        let timer = setTimeout(回调函数,等待的毫秒)
+        清除延时函数
+        clearTimer(timer)
+        setTimeout只会执行一次
+        注意：延迟器需要等待，所以后面的代码会先执行
+        每一次调用延迟期都会产生一个新的延迟器
+
+        JS执行机制
+        js语言是单线程，会渲染慢，为了解决这个问题，html5提出web work标准，允许多线程，
+        出现了同步和异步
+
+        同步任务 在主线程上执行，形成一个执行栈
+
+        异步任务 回调函数实现的，
+        一般分为三类：
+        1 普通事件
+        2 资源加载
+        3 定时器
+        异步任务会放到任务队列中（也称消息队列）
+        
+        事件循环
+        同步进程先执行同步任务，异步进程依次执行，执行完放入任务队列中，同步完成后到队列中找完成的异步任务，
+        不断循环。
+
+        任务队列可分为为任务队列和宏任务队列
+        微只有一个，而且先执行，
+        而宏任务可以有多个，会等到下一次循环执行，通常后执行
+
+        1 location对象
+        数据类型是对象，它拆分并保存URL地址的各个组成部分
+        常用属性和方法：href 获取完整的URL，对其赋值跳转
+        search属性  获取地址 ?符号后面的内容
+        hash属性 获取地址中的哈希值，符号#后面部分 用于经常不刷页面，显示不同页面
+        reload方法 用于刷新页面，传入参数true则强制刷新 location.reload(true) 
+
+        2 navigator对象
+        数据类型是对象，记录浏览器自身的相关信息
+        通过userAgent检测浏览器的版本以及平台
+
+        3 history对象
+        数据类型是对象，主要管理历史记录
+        back() 后退
+        forward() 前进
+        go(参数)   参数1就前进一个页面 ，-1则后退一个页面
+
+        本地存储
+        浏览器本地存储器
+        
+        本地存储器分类
+        localStorage 
+        将数据永久存储在电脑，除非手动删除，关闭页面也存在
+        多页面共享
+        语法：
+        存储数据 .setItem(key,value)
+        获取数据 .getItem(key)
+        删除 .remove(key)
+
+        sessionStorage
+        特征：生命周期为关闭浏览器（一次对话）
+        在同一个页面（窗口）可以共享
+        以键值对存储
+        用法同上
+
+        存储复杂数据类型
+        本地只能存储字符串，无法存储复杂数据类型
+        需要将复杂数据类型转换JSON字符串在存储本地
+        JSON.stringify()
+        JSON转换成复杂类型
+        JSON.parse()
+        
+     -->
+</body>
+</html>

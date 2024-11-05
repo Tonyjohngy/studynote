@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+    /*
+    8 for循环
+    for(起始值;条件;自增){}
+    
+    退出循环：continue跳过本次循环   break退出循环
+
+    while不知道多少次循环的时候用
+    for知道循环次数
+
+    for嵌套循环
+    */
+        // let n = 0
+        // for (let i = 0; i <= 9; i++) {
+        //     for (let j = 0; j <= 9; j++) {
+        //         n = i * j
+        //         document.write(i+'*'+j+'='+n+'<br>')
+        //     }            
+        // }
+
+    /* 
+    9 数组
+    按顺序保存数据的数据类型
+    多个数据按下标储存在一起，从0开始，可以存放任何类型数据
+
+    let arr = [1,2,3]
+    let arr = new Array(1,2,3)
+    取数值
+    arr[0]
+    改数值
+    arr[0] = 1
+    增加数值  尾部
+    arr.push(2)
+    删除数值
+    arr.pop()
+    arr.splice(操作的下标,删除的个数)
+
+    一些术语：
+    元素 下标 长度length
+
+    遍历数组
+    */
+
+   let arr = new Array(1,2,5)
+//    尾部添加
+   arr.push('xx')
+//    头部添加
+   arr.unshift(2)
+//    删除
+    arr.shift()
+    // 指定元素删除，可批量
+//    arr.splice(0,1)
+// for(;;){}无限循环
+   for (let index = 0; index < arr.length; index++) {
+    document.write(arr[index])
+   }
+
+   let a = [2,6,1,7,4]
+   let sum = null
+   let avg = null
+
+   for (let i = 0; i < a.length; i++) {
+        sum += a[i];
+   }
+    avg = sum/a.length
+    console.log(sum)
+   console.log(avg)
+
+   let b = [2,6,1,77,52,25,7]
+   temp = null
+   for (let i = 0; i < b.length; i++) {
+        if (b[i]>temp) {
+            temp = b[i]
+        }    
+   } 
+   console.log(temp)
+
+   let d = []
+   let c =[2,0,6,1,77,0,52,0,25,7]
+    for (let i = 0; i < c.length; i++) {
+        if (c[i]>10) {
+            d.push(c[i])
+        }    
+   } 
+   console.log(d)
+
+   /* 
+   算法
+   冒泡算法
+   两两比对排序最大值
+
+   数组排序
+   
+   */
+    </script>
+</body>
+</html>

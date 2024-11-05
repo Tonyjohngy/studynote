@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css浮动</title>
+    <!-- 
+        传统网页布局的三种方式
+        1、标准流：按标签规定默认方式排列（前面学）
+        2、浮动流：
+
+
+     -->
+     <!-- 网页布局第一准则：
+            多个块级元素纵向找标准流，多个块级元素横向排列找浮动
+
+            通常会用标准流作为父容器排序内部再排序浮动流子容器
+    -->
+    <!-- 
+        浮动最重要的特性：
+        1、脱离标准普通流移动到指定位置（脱标）
+        2、浮动盒子不会保留原先位置
+        3、如果多个盒子设置浮动，他们都会按照属性值一行内显示并顶端对齐排列
+        （ps:如果父容器装不下这些浮动盒子，多出的盒子就会另起一行对齐）
+     -->
+    <style>
+        .zuo {
+            height: 200px;
+            width: 200px;
+            background-color: antiquewhite;
+            float: left;
+        }
+        .you {
+            height: 200px;
+            width: 200px;
+            background-color: antiquewhite;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="zuo">左</div>
+    <div class="you">右</div>
+</body>
+</html>

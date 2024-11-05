@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            perspective: 300px;
+        }
+        /* img {
+            display: block;
+            margin: 100px auto;
+            transition: all 0.7s;
+        }
+
+        img:hover {
+            transform: rotateZ(180deg);
+        } */
+        .a{
+            position: relative;
+            height: 200px;
+            width: 200px;
+            margin: 200px auto;
+            transform-style: preserve-3d;
+        }
+
+        .b,
+        .c{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            background-color: blue;
+        }
+
+        .c {
+            background-color: green;
+            transform: rotateX(50deg);
+        }
+        .a:hover {
+            transform: rotateY(-50deg);
+        }
+
+      
+    </style>
+</head>
+<body>
+    <!-- 
+        3D转换
+        z轴垂直屏幕，向外是正值
+
+        3d位移 
+        translfrom: translateZ(100px) 仅仅在Z轴移动，一般用px单位
+        简写：translate3d(x,y,z) 不能省略，写0
+
+        3d旋转 rotateX(x,y,z)
+         rotate3d(x,y,z，deg)用哪个轴就赋予1
+        左手定则记忆旋转正负
+     -->
+
+     <!-- <img src="images/abcd.jpg" alt=""> -->
+    <!-- 
+
+        透视  perspective（px）
+        在2d平面产生近大远小的视觉立体，但是只是效果二维的
+        模拟视觉位置
+        d视距是人到屏幕的距离单位是px，视距越小物体越大
+        z（z轴）是物体到屏幕的距离，z轴越大物体越大
+
+        透视要写在被观察元素的父元素的上面
+
+        px值越小物体越倾斜
+
+        perspective固定子元素不同z轴大小可以实现不同物体看到效果不同
+
+        3d呈现 transfrom-style
+        允许开启三维立体环境，默认是flag
+        preseve 3d
+
+     -->
+     <div class="a">
+        <div class="b"></div> 
+        <div class="c"></div> 
+     </div>
+</body>
+</html>

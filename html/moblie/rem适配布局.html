@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 从小到大写 -->
+    <link rel="stylesheet" media="screen and (min-width :320px)" href="style320.css">
+    <link rel="stylesheet" media="screen and (min-width :640px)" href="style640.css">
+
+    <style>
+        /* html {
+            font-size: 12px;
+        } */
+        /* 屏幕小于等于800px */
+        /* @media screen and (max-width: 539px){
+            body {
+            background-color: blue;
+
+            }
+        }
+
+        @media screen and (min-width:540px ) and (max-width:969px){
+            body {
+                background-color: green;
+            }
+        }
+
+        @media screen and (min-width: 970px) {
+            body {
+                background-color: red;
+            }
+        } */
+        @media screen and (min-width: 320px) {
+            html {
+                font-size: 50px;
+            }
+        }
+        @media screen and (min-width: 640px) {
+            html {
+                font-size: 100px;
+            }
+        }
+        .header {
+            height: 1rem;
+            width: 100%;
+            background-color: green;
+            color: white;
+            font-size: .5rem;
+            text-align: center;
+            line-height: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        文字、元素高度和宽度随屏幕大小变化而变化，宽度定下高度怎么设置
+        1、rem单位
+        rem是一个相对单位，类似于em,em是父元素字体大小。
+        不同的是rem的根基是相对于html元素的字体大小
+
+        em是基于父元素或本身的字体大小决定的
+        rem是相对于html元素的字体大小决定的，只有一个html元素好控制，父元素不好控制
+        可以根据html的字体大小对整体的控制
+
+        2、媒体查询（media query）
+        是css3的新语法
+        使用@media查询，可以针对不同的媒体类型定义不同的样式
+        @media可以针对不同的屏幕尺寸设置不同的样式
+        当你重置浏览器大小时，页面也会根据浏览器的宽高重新渲染页面
+
+        属性：
+        1、mediatype查询类型，不同的终端有不同的类型
+        all 用于所有设备 print打印机和打印预览
+        screen 用于电脑屏幕、平板电脑、智能手机等（主要）
+
+        2、关键字
+        关键字将媒体类型或者多个媒体特性连接在一起作为媒体查询的条件
+        and 将多个媒体特性连接在一起 相当于且
+        not 排除某个媒体类型 相当于非
+        only 制定某个特定的媒体类型 可以省略
+
+        3、媒体特性
+        width 定义输出设备中页面可见的宽度
+        min-width 定义输出设备最小宽度
+        max-width 最大宽度
+
+        媒体查询+rem实现元素动态大小变化
+
+        4、引入资源
+        当样式繁多时，可以针对不同的媒体使用不同的stylesheet
+
+     -->
+
+     <div class="header">购物车</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+@color : pink;
+@font : 14px;
+
+
+
+body {
+    background-color: @color; 
+}
+
+// 嵌套
+.header {
+    width: 200px;
+    height: 300px;
+    background-color: aqua;
+    a {
+        background-color: bisque;
+        // 交集选择器、伪类元素和伪类选择器要加&，不然会有空格
+        &:hover {
+            background-color: #999;
+        }
+        &::after{
+            content: '';
+        }
+    }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+        正则表达式
+        正则表达式是用于字符串中的字符组合的模式，在js中正则表达式也是对象，
+        通常用来查找代替符合正则表达式的文本
+
+        使用场景 验证表单 过滤敏感词汇 提取文字某些特定部分
+
+        语法
+        const 变量名 = /表达式/
+        步骤：1 定义规则 2 是否匹配
+        regObj.test(检测的字符串)方法 如果正则表达式与指定的字符串匹配返回true 不用加引号
+        regObj.exec(检测的字符串)方法 一样但返回数组，没有就null
+    */
+        const str = 'java学习'
+        const a= /java/
+        console.log(a.test('java'));
+        console.log(a.exec('java'));
+
+    /*
+
+        元字符（特殊字符） 是一些具有特殊含义的字符，极大提高灵活性和匹配功能
+        1 边界符
+        什么开始和结束
+        ^ 以什么开始
+        $ 以什么结束
+        如果^和$一起就是精确匹配
+    */
+        console.log(/^java/.test('java'));
+        console.log(/java$/.test('j'));
+        console.log(/^java$/.test('java'));
+    /*
+        2 量词 
+        设置某个模式出现次数
+        *重复零到多次  +重复一道多次 ?重复零或一次 {n}重复n次 {n,m}重复n到m次
+    */
+
+    /*
+        3 字符类
+        （1） []匹配字符  a.[]只要a包含其中一个字符都返回true  -代表范围
+        比如： [a-z] [a-zA-Z]24字母大小写
+        取^ [^a-z]表示除了小写字母以外的字符
+        （2） .匹配除换行符以外的任何单个字符
+        (3)  某些常见的简写模式
+        \d 相当于[0-9]  \D 相当于[^0-9]  \w [A-Za-z0-9_] \W \s [\t\r\n\v\f]匹配空格（包括换行符、制表符、空格符等） \S
+        
+        4 修饰符
+        修饰符约束正则执行的某些细节行为，如是否区分大小写，是否支持多行匹配等
+        语法：/表达式/修饰符
+        i ignore 是否区分大小写
+        g global 匹配所有满足正则表达式的结果
+        代替replace
+        语法：字符串.replace('/正则表达式/','替换文本')
+
+    */
+
+    </script>
+</body>
+</html>

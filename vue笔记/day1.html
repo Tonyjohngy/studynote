@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <!-- 
+        vue是构建用户界面的渐进式框架
+        基于数据渲染界面
+        初始化项目
+        vue init webpack
+        1 钩子函数
+        const app = new Vue({
+            选择器
+            el:'#app',
+            数据
+            data:{
+            name:'lili'
+            }
+        })
+        2 vue生命周期
+        3 插值表达式
+        语法：{{ 表达式 }}
+        注意
+        使用的数据必须存在，要事先声明
+        支持的是表达式，而不是语句，比如：if for…
+        不能再标签属性中使用{{ }}插值
+
+        vue核心特征：响应式
+        修改数据就会响应到页面
+
+        1  v-html="" 等同innerHtml 
+        2 v-show="" 切换display:none控制显示隐藏  通过表达式判断 适用场景：频繁切换显示隐藏的场景
+        3 v-if 控制元素显示隐藏（条件渲染）基于条件判断，是否创建或移除元素节点 使用场景：要么显示，要么隐藏，不频繁切换的场景
+        4 v-else和v-else-if 和if一起使用多条件判断 v-else-if可多个 v-else放最后
+        5 v-on 事件监听 
+        1、语法：v-on:事件名=“内联语句” 
+        2、v-on:事件名=“methods中的函数名”  简写：@事件名
+        v-on参数传递
+        6 v-bind 动态的设置html的标签属性（src url title…） 语法：v-bind:属性名=“表达式” 简写：:属性名=“表达式”
+        7 v-for 作用：基于数据循环，多次渲染整个元素
+            遍历数组语法：
+            v-for=“(item,index) in 数组”
+            item:每一项
+            index:下标
+            省略index
+            v-for = “item in 数组”
+        v-for中的key
+        作用：给列表项添加的唯一标识。便于Vue进行列表项的正确排序复用
+        语法：
+        key属性=“唯一标识”
+
+        注意点：
+            key的值只能是字符串或数字类型
+            key的值必须具有唯一性
+            推荐使用id作为key（唯一），不推荐使用index作为key（会变化，不对应）
+        8 v-model
+            作用：
+                给表单元素使用，双向数据绑定 -> 可以快速获取或设置表单元素内容
+                数据变化 -> 视图自动更新
+                视图变化 -> 数据自动更新
+                语法：v-model=‘变量’
+            
+     -->
+</body>
+
+</html>

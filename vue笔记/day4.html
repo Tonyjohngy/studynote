@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1 scoped
+        组件之间的样式会相互影响，
+        style加上scoped可避免
+        原理：在对应的style的css加上data-v-hash值 自定义的属性赋予哈希值区分开
+
+        2 data
+        组件中的数据是一个函数
+
+        data () {
+            return {
+            count:100
+        }
+        },
+
+        3 组件通信
+        1、父子关系
+        父向子 父的组件中自动属性 :属性名=属性值 ， 子组件获得props:['属性名']
+        子向父 子组件绑定事件 $emit('方法名','属性值')
+        父组件数值容器@方法名="获取方法名" 获取方法名(){修改属性值}
+
+        2、props详解
+        prop定义：组件上注册的一些自定义属性
+        prop作用：向子组件传递数据 
+        特点：
+            可以传递任意数量的prop
+            可以传递任意类型的prop
+
+        props校验
+        作用： 为prop指定验证要求，不符合要求，控制台就会有错误提示→帮助开发者，快速发现错误
+        props:{
+	    校验的属性名:类型 //Number String...
+
+        完整写法：
+        props:{
+            校验的属性名:{
+                type:类型,// Number String
+                required:true,//是否必填
+                default:默认值,//默认值
+                validator(value){
+                    //自定义校验逻辑
+                    return 是否通过校验
+                }
+            }
+        }
+    },
+
+    prop & data 、单向数据流
+        共同点：都可以给组件提供数据
+        区别：
+
+        data的数据是自己的 → 随便改
+        prop的数据是外部的 → 不能直接改，要遵循单向数据流
+        单向数据流：父级prop的数据更新，会向下流动，影响子组件。这个数据流动是单向的。
+
+        ***谁的数据谁负责，不能直接修改
+        v-model 原理
+            原理：v-model本质上是一个语法糖。例如应用在输入框上，就是value属性和input属性的合写。
+            作用：提供数据的双向绑定
+            使用原因：v-model和props的数据不能直接绑定
+            <input :value="msg2" @input="msg2 = $event.target.value" type="text" >
+            数据变，视图跟这边 :value
+            视图变，数据跟着变 @input
+            注意：$event用于在模版中，获取事件的形参
+
+    表单类组件封装
+        表单类组件封装 → 实现子组件和父组件数据的双向绑定
+        父传子：数据应该是父组件props传递过来的，v-model拆解绑定数据
+        子传父：监听输入，子传父传值给父组件修改
+        本质：实现了子组件和父组件数据的双向绑定  
+        
+        父组件
+        <BaseSelect :cityId="selectId" @事件名="selectId = $event"></BaseSelect>
+        子组件
+        <select :value="cityId" @change="handleChange">...</select>
+        子组件
+        props: {
+            cityId:String
+        },
+        methods: {
+        handleChange (e) {
+            this.$emit('事件名', e.target.value)
+        }
+        }
+
+    v-model简化代码
+        父组件v-model简化代码，实现子组件和父组件数据双向绑定
+        子组件中：props通过value接受，事件触发input
+        父组件中：v-model给组件直接绑数据 
+        父组件
+        <BaseSelect v-model="selectId"></BaseSelect>
+        子组件
+        <select :value="value" @change="handleChange">...</select>
+        子组件
+        props: {
+            value:String
+        },
+        methods: {
+        handleChange (e) {
+            this.$emit('input', e.target.value)
+        }
+        }
+
+        .sync修饰符
+        作用：可以实现子组件和父组件数据的双向绑定，简化代码
+        特点：prop属性名，可以自定义，非固定为value
+        场景：封装弹框类的基础组件，visible属性 true显示 false隐藏
+        本质：就是 :属性名 和 @update:属性名 合写
+        <BaseForm ref="baseForm"></BaseForm>
+        this.$refs.baseForm.组件方法()
+
+        Vue异步更新、$nextTick
+        Vue是异步更新DOM的
+        想要在DOM更新完成之后做某件事，可以使用$nextTick
+        this.$nextTick(() => {
+            //业务逻辑
+        })
+
+    -->
+</body>
+</html>

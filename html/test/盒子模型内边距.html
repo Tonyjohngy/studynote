@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子模型</title>
+    <style>
+        div {
+            width: 300px;
+            height: 200px;
+            /* 边框粗细 */
+            border-width: 20px;
+            /* 边框样式 solid实线 dashed 虚线 dotted点线 */
+            border-style: solid;
+            /* 边框颜色 */
+            border-color: rgb(17, 0, 255);
+            /* 边框简写 没有顺序*/
+            /* border: 1px solid wheat; */
+            /* 设置上边框 */
+            border-top: 20px solid #ff0000;
+
+            /* 内边框 会使盒子变大 要减去内间距*/
+
+            /* padding-left: 2em;
+            padding-top: 20px; */
+            /* 简写 
+            1个值上下左右都是20
+            2个值上下是5 左右是10
+            3个值上5 左右10 下20
+            4个值上右下左依次顺时针顺序
+            */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+        <!--边框border padding内间距 margin外边距   -->
+    <div>
+        盒子内容是contentyejhklmfadlfnahjccbaejdga菜鸟仓吧见客户v更好v和v和GV啊称霸
+    </div>
+</body>
+</html>

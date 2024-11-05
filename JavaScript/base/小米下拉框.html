@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dropdown {
+            height: 40px;
+            width: 100px;
+            border:  1px black solid;
+            text-align: center;
+        }
+        .content {
+            display: none;
+        }
+        a {
+            display: block;
+            height: 40px;
+            width: 100px;
+            border:  1px black solid;
+            text-decoration: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">电子产品</div>
+    <div class="content">
+         <a href="">手机</a>
+        <a href="">电脑</a>
+        <a href="">电视</a>
+    </div>
+    <script>
+       const dropdown = document.querySelector('.dropdown')
+       const content = document.querySelector('.content')
+       dropdown.addEventListener('mouseenter',function(){
+            if (content.style.display === 'block') {
+                content.style.display = 'none'
+            }else{
+                content.style.display = 'block'
+            }
+       })
+
+        content.addEventListener('mouseleave',function(){
+            if (content.style.display === 'none') {
+                content.style.display = 'block'
+            }else{
+                content.style.display = 'none'
+            }
+       })
+    </script>
+</body>
+</html>

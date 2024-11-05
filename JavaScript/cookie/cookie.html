@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            web服务器向浏览器发送web页面，记录客户端的用户信息，
+            用户可以在下一次访问时从cookie中读取用户记录
+
+            以键值对的形式记录，如username = zhangsan
+
+            cookie的创建
+            document.cookie expires设置过期时间 path告诉浏览器参数路径
+            cookie的读取
+            赋值
+            cookie的修改
+            赋值
+            cookie的删除
+            expires 设置过期时间
+            
+        */
+
+       document.cookie = "username = 11;expires = Thu, 18 Dec 2043 00:00:00 GMT;path=/";
+       var a = document.cookie;
+       console.log(a);
+       document.cookie = "username=23";
+       var b = document.cookie;
+       console.log(b);
+    //    设置函数
+        function setCookie(params) {
+            
+        }
+    </script>
+</body>
+</html>

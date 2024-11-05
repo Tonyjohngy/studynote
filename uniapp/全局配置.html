@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            color: #0267ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1 全局配置
+        app.json 
+        常用的配置项：
+        1 pages 记录当前小程序所有页面的存放路径
+        2 window 全局设置小程序窗口的外观
+        3 tabBar 设置小程序底部 tabBar
+        4 style 是否启用新版组件样式
+
+        2 全局配置-window
+        常用配置项
+        navigationBarTitleText 导航栏标题文字内容
+        navigationBarBackgroundColor 导航栏的背景颜色 
+        navigationBarTextStyle 导航栏标题颜色，仅支持black/white
+        backgroundColor 窗口的背景颜色 不支持red等名词
+        backgroundTextStyle 下拉loading的样式，仅支持dark/light
+        enablePullDownRefresh 是否全局开启下拉刷新
+        onReachBottomDistance   页面上拉触发事件时距页面底部的距离，单位px，比如上拉到多少加载更多数据 上拉触底的距离
+        默认50px建议默认
+
+        tarBar 实现多页面快速切换
+        通常分为底部和顶部
+        注意：tarBar只能配置最少两个，最多5个
+        当渲染顶部的时候，不显示icon，只显示文本
+
+        tarBar的六个组成部分
+        backgroundColor tatBar的背景色
+        selectedIconPath 选中的图片路径
+        selectedColor  选中的颜色   
+        borderStyle 上边框的颜色
+        iconPath    未选中的图片路径
+        color   未选中的颜色，默认
+
+        配置
+        app.json->tarBar
+        配置项
+        position 位置，仅支持bottom/top 默认bottom
+        borderStyle 上边框颜色，仅支持black/white 默认black
+        color 没有选中颜色
+        selectedColor 被选中颜色
+        backgroundColor 背景色
+        list 包含tab页签的列表 最少两个最多五个
+
+        list中每个tab项的配置选项
+        pagePath 页面路径
+        text 显示文字
+        iconPath 未选中图标路径
+        selectedIconPath 选择的 当position为top不显示icon
+
+        3 页面配置
+        Page() 特殊页面效果 页面优先 就近原则
+        常用配置属性
+        navigationBarBackgroundColor 导航栏背景颜色 十六进制
+        navigationBarTextStyle  当前页面导航栏标题颜色 仅支持white/black
+        navigationBarTitleText  当前页面导航栏文字
+        backgroundColor 当前页面窗口背景色
+        backgroundTextStyle 下拉loading的样式，仅支持dark/light
+        enablePullDownRefresh   是否支持开启下拉刷新
+        onReachBottomDistance   下拉出发时间的距离 px
+
+        4 网络数据请求
+        1 小程序网络数据请求的限制
+        出于安全考虑：只能请求https类型接口 必须将接口的域名添加到信任列表
+
+        2 get请求
+        调用wx.request()方法
+
+        3 post请求
+
+        4 页面加载初始化一些数据 onLoad事件中调用获取数据函数
+
+        5 没有https可以本地设置允许http
+
+        6 关于跨域和ajax
+        小程序宿主环境不是浏览器，而是微信客户端，不存在跨域问题
+        由于没有依赖浏览器，没有XMLHttpRequest这个对象，没有ajax请求，
+        而是发起网络数据请求
+     -->
+</body>
+</html>

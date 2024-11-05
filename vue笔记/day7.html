@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        1  vue-cli 环境脚手架，不用配置环境
+        2  ESlint规范 eslint插件
+        
+        	//当保存时，eslint自动帮我们修复错误
+            "editor.codeActionsOnSave": {
+                "source.fixAll": true
+            },
+            //保存代码，不自动格式化
+            "editor.formatOnSave": false
+
+        3 vuex
+            1、安装vuex插件
+            npm add vuex@3 --legacy-peer-deps
+            2、新建vuex模块文件
+            store -> index.js
+            3、创建仓库
+            //index.js
+            // vuex相关核心代码
+            import Vue from 'vue'
+            import Vuex from 'vuex'
+
+            // 插件安装
+            Vue.use(Vuex)
+
+            // 创建仓库
+            const store = new Vuex.Store()
+
+            // 导出给main.js使用
+            export default store
+
+            4、main.js挂载
+            new Vue({
+              render: h => h(App),
+              store
+            }).$mount('#app')
+
+        5 提供&访问vuex的数据
+
+            1.提供数据：
+                State提供唯一的公共数据源，所有共享的数据都统一放到Store中的State中存储。
+                在State对象中可以添加我们要共享的数据
+
+                const store = new Vuex.Store({
+                  state: {
+                    数据名: 数据值,
+                  }
+                })
+
+            2.使用数据：
+            通过store直接访问
+            模板中
+            {{ $store.state.xxx }}
+            //组件逻辑中
+            this.$store.state.xxx
+            //js模块中
+            store.state.xxx
+            通过辅助函数
+            使用是需要导入mapState from vuex
+            computed: {
+              ...mapState(['count'])
+            }
+            使用
+            <label>{{ count }}</label>
+
+            
+          6  getters
+          类似于计算属性 和state同级
+          const store = new Vuex.Store({
+                  getters: {
+                    数据名: {数据值,}
+                  }
+                })
+
+
+          7  mutations
+          vuex同样遵循单向数据流，组件中不能直接修改仓库的数据
+          通过 strict:true 可以开启严格模式
+                const store = new Vuex.Store({
+                  strict: true,
+                  state: {
+                    title: '大标题',
+                    count: 100
+                  }
+                })
+                使用
+                定义mutations对象，对象中存放修改state的方法
+                const store = new Vuex.Store({
+                  strict: true,
+                  state: {
+                    title: '大标题',
+                    count: 100
+                  },
+                  mutations: {
+                    addCount (state) {
+                      state.count += 1
+                    },
+                  }
+                })
+                组件中提交调用mutations
+                this.$store.commit('addCount')
+                提供mutations函数（带参数 - 提交载荷 payload）
+                        mutations: {
+                          addCount (state, n) {
+                            state.count += n
+                          },
+                        }
+              页面中提交mutation（提交参数只能一个，如果有多个参数，包装成一个对象传递）
+              this.$store.commit('addCount', n)
+
+              辅助函数：mapMutations 同mapState不使用步骤类似
+                        但调用的时候在methods中
+
+          8 actions
+
+          mutations必须是同步的
+          actions处理异步操作
+          actions: {
+            changeCountAction (context, num) {
+            //一秒后，给个数，修改num值
+              setTimeout(() => {
+                context.commit('changeCount', num)
+              }, 1000)
+            }
+          }
+          调用this.$store.dispatch('changeCountAction', 666)
+          辅助函数 - mapActions
+          mapActions是把位于actions中的方法提取出来，映射到组件methods中
+
+          9 模块化
+          user模块：store/modules/user.js
+          const state = {
+              userInfo: {
+                name: 'zs',
+                age: 18
+              },
+              score: 80
+            }
+            const mutations = {}
+            const actions = {}
+            const getters = {}
+
+            export default {
+               namespaced: true,//开启命名空间
+              state,
+              mutations,
+              actions,
+              getters
+            }
+
+            //在index中导入
+            import user from './modules/user'
+
+            const store = new Vuex.Store({
+              modules: {
+                user,
+              }
+            })
+            调用...mapState('user', ['userInfo']),
+
+
+
+
+
+
+     -->
+</body>
+</html>

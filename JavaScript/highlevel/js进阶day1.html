@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    
+    <script>
+        /*
+        1 作用域
+        分局部和全局
+        1.1 局部作用域
+        分为函数和块作用域
+        函数作用域
+        函数内部，外部和函数与函数间的变量都不能访问
+        函数执行完就会清空，函数的参数是函数的局部变量
+
+        块作用域
+        {}包含的是代码块 代码块内部的变量外部有可能会被访问
+        let声明的变量会产生块作用域，var不会产生
+        const生命的变量也会
+        不同代码块之间的不可以相互访问
+        推荐使用let或者const
+
+        1.2 全局作用域
+        <script>标签或者js文件的最外层，在此声明的变量函数、其他作用域都可访问
+            注意：
+            1 为window对象动态添加的属性默认也是全局  不推荐
+            2 函数中没有加关键字声明也是  不推荐
+            3 尽少声明全局，防止全局变量被污染
+            
+        1.3 作用域链
+            函数执行的时候先在函数内部查找局部变量，没有再向父元素查找，一层层形成链
+            总结：
+            1 嵌套关系的作用域串联形成作用域链
+            2 从小到大查找变量
+            3 子作用域可以查找父作用域，反过来就不行
+
+        1.4 js垃圾回收机制
+            1 js的内存分配和回收自动完成
+            用不到的内存没有及时释放就会导致内存泄漏
+            2 内存的生命周期
+            内存分配-》内存使用-》内存回收
+            全局变量一般不会被回收，局部变量不用就会被回收
+            算法
+        1.5 闭包
+        闭包 = 内层函数 + 外层函数的变量
+        作用：封闭数据，提供操作，外部也可以访问函数内部的变量
+        闭包的应用：实现数据的私有
+        缺陷：内存泄漏
+
+        不闭包可能会被篡改数据
+        */
+            function outer() {
+                const a = 100
+                function b() {
+                    console.log(a);
+                }
+                return b()
+            }
+            const fu = outer()
+        /*
+        2 变量提升
+        变量声明之前被访问（仅存在于var声明）
+        注意
+        变量再声明之前被使用会报语法错误
+        var声明之前被使用变量值也是undefined
+        let、const声明不存在变量提升
+        变量提升出现在作用域中
+        实际开发先声明后访问，不建议用var
+
+        3 函数提升
+        类似，函数声明之前被调用
+        总结 
+        函数提升调用更为灵活
+        函数表达式不存在提升 const fn = function(){}
+        出现在相同作用域
+        
+        4 函数参数
+        4.1 动态参数
+            arguments是函数内部内置的伪数组变量，包含了调用函数时传入的所有实参
+            当传入参数不确定多少时
+
+            总结
+            arguments是一个伪数组，只存在于函数中
+            作用是动态获取函数的实参
+            可以通过for循环依次得到传递过来的实参
+
+            ps 伪数组是具有数组长度和索引但没有数组相关方法
+        
+        4.2 剩余参数
+        允许我们将一个不定数量表示为一个数组
+            使用场景：用于获取多余的实参
+
+            总结
+            ...是语法符号，至于最末函数的形参之前，用于获取多余的实参
+            是一个真数组
+
+        剩余参数更推荐使用
+
+        展开运算符
+        ... 将一个数组展开，不是修改原数组
+
+        展开运算符和剩余参数
+        */
+        //arguments 动态函数
+        function sum(){
+            let sum = 0
+            for (let i = 0; i < arguments.length; i++) {
+                sum += arguments[i]         
+            }
+            return sum
+        } 
+        console.log(sum(1,3,5,8));
+        // 剩余参数
+        function sum2(a,b,...arr){
+            let sum = a+b
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i]         
+            }
+            return sum
+        } 
+        console.log(sum2(1,3,5,9));
+        // ...展开运算符
+        const arr = [1,4,6,78]
+        const arr2 = [2,5,7]
+
+        console.log([...arr,...arr2]);
+        /*
+        3 箭头函数
+        作用简化函数，多用于匿名函数
+        */
+    //    普通函数
+    const fn1 = function(x){
+        console.log(x);
+    }
+    // 箭头函数
+    const fn2 = (x)=>{
+        console.log(x);
+    }
+    //只有一个参数可以省略小括号,
+    const fn3 = x => console.log(x); 
+    // 一行代码可以写在一行，并且不写括号和return
+    const fn4 = (x,y) => x+y; 
+    // 加括号的函数体返回对象字面量表达式
+    const fn5 = user => ({user:user})
+    /*
+    总结
+    箭头函数属于表达式函数，不存在函数提升
+    只有一个函数省略（）
+    函数在一行可以省略{}，并自动返回值返回
+    加括号返回对象字面量
+    
+    箭头函数参数
+    普通函数有动态参数
+    箭头函数没有arguments，但是有剩余参数...args
+
+    箭头函数没有this，只会从自己的作用域链的上一层沿用this
+    没有就指向当前对象，而是window，所以用DOM事件回调函数比推荐用箭头函数
+
+    箭头函数同一行可以省略花括号和return
+    多行就不行一定写上
+    */
+   const fn6 = (...arr)=>{
+
+   }
+   /*
+   数组解构
+   将数组单元值快速批量赋值给一系列的简洁语法
+   1 基本语法
+   */
+//   多个单元值批量赋值
+   const [min,max] = [1,100]
+//    交换值
+   let a = 1
+   let b = 2
+//    类似立刻执行函数，前面有语句要加分号
+   ;[a,b] = [b,a]
+   /*
+   变量多而赋值少，多的会被赋值undefined
+   变量少而赋值多，多的不赋值
+   剩余变量获取赋值多的情况，最后一个赋予数组
+   */
+   const [a1,b1,...c1] = [1,2,3,45,5,7]
+//   防止undefined可以设置默认值,只有undefined才会生效
+const [a2=0,b2=0] = [2] 
+// 按需求导入
+const [a3,a4,,a5] = [1,3,4]
+// 支持多维度数组
+const [x,y,[z,f]] = [1,2,[3,4]]
+   /*
+   对象解构
+   用{}
+   基本语法
+   对象属性的值将赋值到属性名相同的变量
+   注意解构的变量名不要和外面的变量冲突，否则报错
+   没找到对应变量名一致值为undefined
+   */
+//   简单语法
+  const {username,age} = {age:10,username:'lili'}
+//   给新的变量名赋值
+const {unname:user,sex} = {user:'lian',sex:'man'}
+// 数组对象解构
+const pig = [{
+    name:'gogo'
+}]
+const[{my}] = pig
+console.log(my);
+// 多级对象解构
+const person = [
+    {
+        name:'peiqi',
+        famliy:{
+            mother:'mama',
+            father:'baba',
+            sister:'qiqi'
+        },
+        age:13
+    }
+]
+
+/*
+foreach遍历数组
+语法：被遍历的数组.foreach(function(当前数组元素,当前数组索引){
+    函数体
+
+filter筛选数组  筛选符合条件并创建新的数组 currentValue必写 index选写 返回新数组，不会影响原来的数组
+被遍历数组.filter(function(currentValue ,index){
+    return 筛选条件
+})
+})
+*/
+    </script>
+    
+</body>
+</html>

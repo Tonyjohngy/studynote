@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>点名</h3>
+    <div id="mz"></div>
+    <button id="btn">开始</button>
+    <script>
+        function dianMing(){
+            let name = ['赵云','黄忠','关羽','张飞','马超','项羽','刘备']
+            const mz = document.getElementById('mz')
+            const btn = document.getElementById('btn')
+            btn.addEventListener('click',function(){
+                let i = Math.floor(Math.random() * name.length)
+                mz.innerHTML = name[i]
+                name.splice(i,1)
+                if(name.length == 0){
+                    btn.disabled = true
+                }
+            })
+            
+        }    
+        dianMing()
+    </script>
+</body>
+</html>

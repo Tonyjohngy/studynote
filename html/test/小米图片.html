@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .a {
+            width: 298px;
+            height: 415px;
+            margin: 100px auto;
+            background-color: 0036ff;
+        }
+        img {
+            /* 和父类元素一样宽 */
+            width: 100%;
+        }
+        
+        div:hover {
+            background-color: azure;
+        }
+
+        .b {
+            height: 70px;
+            font-size: 14px;
+            /* 因为这个段落没有设置宽度所以padding不会撑开盒子宽度 */
+            padding: 0 28px;
+            margin-top: 30px;
+        }
+        .c {
+            font-size: 12px;
+            color: gray;
+            margin-top: 15px;
+            padding: 0 28px;
+        }
+        .d {
+            margin-top: 15px;
+            padding: 0 28px;
+            font-size: 14px;
+        }
+        .d span {
+            color: orange;
+        }
+        .d em {
+            margin: 0 6px 0 15px;
+            font-style: normal;
+            color: #ebe4e0;
+        }
+        .d h4 {
+            display: inline-block;
+        }
+
+        .d a {
+            font-weight: 400;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="a">
+            <img src="images/earphone.jpg" alt="蓝牙耳机">
+        <p class="b">
+            快递牛，整体不错蓝牙可以说秒连。红米给力
+        </p>
+        <div class="c">
+            来自于****的评价
+        </div>
+        <div class="d">
+            <h4><a href="#">
+                Redmi AirDots真无线蓝牙
+            </a>
+            </h4>
+            <em>|</em>
+            <span>99.9元</span>
+        </div>
+    </div>
+</body>
+</html>

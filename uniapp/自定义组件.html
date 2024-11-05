@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 自定义组件
+        1、创建组件
+        新建Components文件夹，新建文件夹，右键新建组件Component
+        2、引用组件
+        分为
+        局部组件
+        在相应页面的.json文件中useComponent 相应标签
+        全局组件
+        在app.json配置文件中引入组件
+
+        按照使用频率和范围来选择引用方式
+
+        页面和组件的不同
+        组件：.json文件中需要声明"component":true属性
+            .js文件中调用的是Component()函数
+            组件的事件处理函数需要定义在methods中
+            
+        样式
+        不会影响组件以外的UI结构，只对当前组件生效
+        好处：防止影响外界 外界不会破坏组件
+
+        注意点：
+        全局样式对组件无效
+        只有class选择器对组件的样式有隔离性，为避免样式冲突
+        组件和引用组件的页面建议使用class选择器
+
+        但如果外界能够控制组件内部样式，用styleIsolation修改组件样式隔离选项
+        用法
+        1 在组件.js文件中新增加配置  可选值 isolated 隔离样式 apply-shared 页面样式影响组件 shared 相互影响
+        Component({
+            options:{
+                styleIsolation:'isolated'
+            }
+        })
+        2 或在组件.json文件中新增加配置
+        {
+            "styleIsolation":"isolated"
+        }
+
+        1、data数据
+
+        2、方法要放在method中
+
+        ps不是页面元素方法要加_下划线
+
+        3、properties属性
+        properties: {
+            // 简化方式
+            // max:Number,
+            // 完整定义
+            max:{
+            type:Number,
+            value:10
+            }
+        },
+
+        在小程序中data和properties的区别
+        在组件中用法相同，可读可写
+        data更偏向于储存组件的私有数据
+        properties更倾向于储存外界传递到组件中的数据
+        两者等同 都可以页面渲染和setDate
+
+        数据监听器
+        监听和响应任何属性和数据字段变化，从而执行特定操作，类似vue中的watch侦听器
+        用法
+        observers:{
+            'n1, n2':function (n1,n2) {
+            this.setData({sum:n1+n2})
+            }
+        }
+        监听器支持监听单属性和多个属性变化
+        三种情况：给对象.A赋值  给对象.B赋值 直接给对象赋值
+        observers:{
+            '_rgb.R,_rgb.G,_rgb.B':function (R,G,B) {
+            this.setData({
+                fullColor: `${R}, ${G}, ${B}`
+            }),
+            console.log(this.data.fullColor);
+            }
+        },
+        纯数字段
+        不用于界面渲染的data字段
+        应用场景：既不会展示在界面上，也不会传递给其他组件
+        有利于提升界面更新性能
+
+        用法
+        在Component中定义options节点指定pureDataPattern一个正则表达式，
+        符合表达式的是纯数字字段
+        options:{
+            pureDataPattern: /^_/
+        },
+
+        组件的生命周期函数
+        created 组件实例刚刚被创建时执行
+        attached    组件实例进入页面节点树时执行
+        ready   组件在视图层布局完成时执行
+        moved   组件被移动到节点树另一个位置执行
+        detached    组件实例被从页面节点树移除时候执行
+        error   组件方法错误时执行
+        主要是
+        create 生命周期刚被触发，不能调用setData函数，只能用this给一些属性添加自定义字段
+        attached    完全初始化，进入页面节点数，可以setData，可以获取初始数据
+        detached    被销毁 主要做清理工作
+
+        lifetimes节点
+        在小程序组件，生命周期函数可以定义在Component构造的第一级参数中，可以在lifetimes进行
+        声明，（推荐优先级最高）
+
+        组件所在页面的生命周期
+        自定义组件的行为依赖于页面状态的变化，此时需要组件所在页面的生命周期
+        生命周期函数
+        hide隐藏 show展示 resize尺寸变化的时候执行
+
+        pageLifetimes节点
+        pageLifetimes:{
+            show(){
+            console.log('show');
+            },
+            hide(){
+            console.log('hide');
+            },
+            resize(){
+            console.log('resize');
+            },
+        }
+
+        插槽
+        在自定义组件可以提供一个插槽slot，用于承载组件使用者提供的wxml结构
+        是一个占位符
+
+        单个插槽
+        默认每个自定义组件只允许一个slot进行占位
+
+        启动多个插槽
+        组件.js中启用options中设置multipleSlots:true
+
+        定义多个插槽
+        以不同的name来区分不同的插槽
+        使用的标签要加上slot=name内容
+        父组件
+        <view>
+            <slot name="before"></slot>
+            <view>中</view>
+            <slot name="after"></slot>
+        </view>
+        子组件
+        <test2 contry="{{contry}}">
+            <view slot="before">前</view>
+            <view slot="after">后</view>
+        </test2>
+        父子组件之间的通信3种方式
+        1 属性绑定
+        父向子传递数据，父组件向子组件指定属性设置数据，仅支持JSON兼容的数据
+        用法：
+        1、父组件定义并传递
+        <test2 contry="{{contry}}">
+            <view slot="before">前</view>
+            <view slot="after">后</view>
+        </test2>
+        2、子组件定义properties
+          properties: {
+            contry:String,
+         },
+        3、子组件使用
+         <view>
+            <slot name="before"></slot>
+            <view>中，子组件中父组件传递的contry：{{contry}}</view>
+            <slot name="after"></slot>
+        </view>
+
+        2 事件绑定
+        子组件传递数据给父组件，任意类型的数据
+        1、父组件定义数据，通过自定义事件的形式来传递子组件
+            syncCount(e){
+                console.log(e.detail.value);
+            },
+        2、父组件的wxml，通过自定义事件，将父组件定义的函数传递给子组件
+        <test3 count="{{count}}" bind:sync="syncCount"></test3>
+
+        3、在子组件js中，通过this.triggerEvent('自定义事件名',{/*参数对象*/})，将数据发送给父组件
+        this.triggerEvent('sync',{value:this.properties.count})
+
+        4、在父组件的js中，通过e.detail获取子组件传递过来的数据
+        syncCount(e){
+                this.setData({
+        count:e.detail.value
+        })
+        },
+
+        3 获取组件实例
+        父组件组通过this.selectedComponent()获取子组件实例对象
+        可以直接访问子组件的任意数据和方法
+        getCilid(){
+            const child = this.selectComponent('.customer')
+            child.setData({
+            count:child.properties.count +1
+            })
+            console.log(this.data.count);
+            child.addCount()
+        },
+
+        behaviors
+        实现组件间代码共享的特性，类似vue.js的mixins
+
+        工作方式
+        behavior包含的一些属性、数据和生命周期函数的方法，被使用时被合并到组件中
+        创建behavior
+        js文件
+        module.exports = Behavior({
+            data:{},
+            properties:{},
+            methods:{}
+        })
+        导入并使用
+        const myBehavior = require("../../behaviors/my-behavior")
+            Component({
+            
+            behaviors:[myBehavior]
+            })
+
+        所有可用的节点
+        properties data methods behaviors created attached ready 等生命周期函数
+
+        behavior和组件的字段同名的规则：
+            1、对象类型会合并两者
+            2、其余会覆盖 优先级： 组件>父behaviors>子behaviors
+
+        -->
+</body>
+</html>

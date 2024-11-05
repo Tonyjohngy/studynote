@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <script>
+        /* 
+        6.1 运算符
+        赋值运算符 = 其他 += -= *= /= %= 先加后赋值
+
+        6.2 一元运算符
+        ++自增 --自减
+        前置和后置
+        前置先运算后赋值  后置先赋值后运算
+        单独自增无差别
+        因为单独使用后置会多一些
+        */
+        let i = 2
+        console.log(i++ + 1)
+        console.log(++i + 1)
+        /* 
+        6.3 比较运算符
+        比较两边是否相等 : 判断
+        >  <  >= <= ==值是否相等  ===值和类型是否相等  !==
+        比较结果是布尔值
+
+        =赋值 ==判断 ===是全等
+        注意：字符串比较的是ASCII码，从左到右
+              NaN不等于任何值，包括它本身
+              尽量不要比较小数，有精度问题
+              不同类型会发生隐式转换，转换成number类型
+              开发中推荐===  !==
+        */
+        let a = 1
+        let b = 2
+        console.log('----------比较----------------')
+        console.log(a===b)
+        console.log(1=='1')
+        console.log(1==='1')
+        console.log('a'>'b')
+        console.log('ab'>'bb')
+        console.log(NaN>'bb')
+
+
+        console.log('----------比较----------------')
+        /* 
+        6.4 逻辑运算符
+        &&与 ||或 !非
+        逻辑非很高，逻辑与比逻辑或优先级更高
+        */
+        
+        let g = false
+        let f = true
+        let h = false
+        let d = !g || f && h
+        console.log('====>'+d+'<====')
+        /* 
+        6.5 远算符优先级
+        从大到小 () ++ -- ! * / + - > >= <= == !== === $$ || = ,
+
+        7.1 语句
+        表达式和语句：
+        表达式：可被求值，所以可以写在赋值语句的右侧 num = 3+4
+        语句：不一定有值 alert() console.log()
+
+        7.2 三大分支语句
+
+        顺序结构：从上到下执行
+        分支结构：根据条件选择执行代码
+        循环结构：重复执行
+
+        三大分支语句：if switch 三元运算符
+
+        7.2.1 if语句
+        分为三种使用：单分支、双分支、多分支
+        单分支
+        除了0,所有数字都为true 除了'' ,字符串都为true
+        */
+       let c = 3
+       if (c>2) {
+        console.log(c)
+       }
+       /* 
+       双分支
+       */
+      if (c>2) {
+        console.log(c)
+      } else {
+        console.log('error')
+      }
+
+    //   let year = prompt('输入年份')
+    //   if( year % 4 === 0 && year%100 !== 0 || year % 400 === 0){
+    //     alert('闰年')
+    //   }else{
+    //     alert('平年')
+    //   }
+    // 多分支
+      if (c>2) {
+        console.log(c)
+      } else if (c<2){
+        console.log('error1')
+      }else {
+        console.log('error2')
+      }
+
+    //   let score = prompt('输入成绩：')
+    //   if (score >=90) {
+    //     alert('优秀')
+    //   }else if (90 > score >= 80){
+    //     alert('良好')
+    //   }else if(80 > score >= 70){
+    //     alert('及格')
+    //   }else{
+    //     alert('不及格')
+    //   }
+      /* 
+      三元运算符
+      条件?满足条件执行代码:不满足条件执行代码
+      */
+    //   console.log( c > 2 ? 1 :2)
+    //     // 补0案例
+    //    let num =  prompt('输入数字')
+    //     num =  num>10 ? num : '0'+num
+    //     alert(num)
+      /* 
+      switch语句
+      switch(数据){
+        case 值1:
+            代码1
+            break
+        case 值2:
+            代码2
+            break
+        default:
+            代码n
+            break
+      }
+      1、switch语句用于等值判断，不用于区间判断
+      2、switch case一般配合break关键字使用，没有break会造成case穿透
+      */
+
+    // let num1 = prompt('数字1')
+    // let num2 = prompt('数字2')
+    // let sp = prompt('+ - * /其中一个')
+    // let total = null;
+    //   switch (sp){
+    //     case '+' :
+    //         total = num1 + num2
+    //         break;
+    //     case '-' :
+    //         total = num1 - num2
+    //         break;
+    //     case '*' :
+    //         total = num1 * num2
+    //         break;
+    //     default:
+    //         total = num1 /num2
+    //         break
+    //   }
+    //   alert(total)
+      /* 
+        7.3 循环结构
+        7.3.1 while循环
+        while具备三要素：变量起始值 终止条件 变量自增
+
+        break 退出循环
+        continue 跳过下次循环
+      */
+    //   let t = 0
+    //   let j = 0;
+    //   while(j<100){
+    //     j++
+    //     document.write('第'+j+'次'+'<br>')
+    //   }
+    //   while(j<100){
+    //     j++
+    //     t += j
+    //     console.log('第'+j+'次')
+    //   }
+    //     while(j<100){
+    //     j++
+    //     if(j%2 === 0){
+    //         t += j    
+    //     }
+    //     console.log('第'+i+'次')
+    //   }
+    //   alert(t)
+
+    // 银行案例
+    let money = 100
+    while (true) {
+       let num = +prompt('请您选择操作：1.存钱2.取钱3.查看余额4.退出')
+        if (num === 4) {
+            break
+        } 
+        if(num === 1){
+        let cun = +prompt('请存入多少钱')
+        money = money+cun
+        alert('已存入'+cun)
+        break
+        }else if(num === 2){
+        let qu = +prompt('请取出多少钱')
+        money = money-qu
+        alert('已存入'+qu)
+        break
+        }else{
+            alert('还有'+ money)
+            break
+        }
+    }
+     
+    </script>
+</body>
+</html>

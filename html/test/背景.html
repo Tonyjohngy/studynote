@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景</title>
+    <style>
+        div {
+            height: 300px;
+            width: 300px;
+            /* transparent 透明 */
+            background-color: pink;
+            /* 背景图片 url() 小图标、大图片*/
+            background-image: url(images/man.jpg);
+            /* 背景平铺 默认情况是平铺  repeat-x沿着X轴 repeat-y沿着Y轴平铺 repeat平铺 no-repeat不平铺*/
+            background-repeat: no-repeat;
+            /* 背景图位置 可加方位词或者   方位词只有一个时另一个轴默认居中*/
+            background-position: center bottom;
+            /* background半透明  alpha半透明0-1之间*/
+            background: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

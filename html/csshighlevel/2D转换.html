@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform: translate(20px,20px);
+        }
+        .b {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+        .big {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        .small {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            background-color: blueviolet;
+            transform: translate(-50%,-50%)
+        }
+        .pic1 {
+            height: 50px;
+            width: 50px;
+            transform: rotate(45deg);
+            background-color: blue;
+        }
+        .d {
+            position: relative;
+            width: 200px;
+            height: 50px;
+            border: 1px solid black;
+        }
+
+        .d::after {
+            position: absolute;
+            content: "";
+            height: 25px;
+            width: 25px;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            transform: rotate(45deg);
+            top: 10px;
+            right: 10px;
+            transition: all 0.3s;
+        }
+
+        .d:hover::after {
+            
+            transform: rotate(225deg);
+        }
+        .f {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            transition: all 0.6s;
+            transform-origin: left bottom;
+        }
+        .f:hover {
+            transform: rotate(360deg);  
+        }
+        .g {
+            height: 200px;
+            width: 200px;
+            background-color: gray;
+            overflow: hidden;
+        }
+        .g::after {
+            display: block;
+            content: 'nihga';
+            width: 100%;
+            height: 100%;
+            background-color: blueviolet;
+            transform-origin: left bottom;
+            transform: rotate(180deg);
+            transition: all 0.5s;
+        }
+        .g:hover::after {
+            transform: rotate(0deg);
+        }
+        .j  {
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            background-color: aquamarine;
+            transform-origin: left bottom;
+            transition: all 0.5s;
+        }
+        .j:hover {
+            transform: scale(2,2);
+        }
+        .k {
+            margin: 400px auto;
+            height: 200px;
+            width: 200px;
+            transition: all 0.3s;
+        }
+        .k:hover {
+            transform: scale(1.2);
+        }
+        .list ul li {
+            float: left;
+            margin-left: 10px;
+            list-style: none;
+            text-align: center;
+            line-height: 20px;
+            height: 20px;
+            width: 20px;
+            border: 1px green solid;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        .list ul li a {
+            text-decoration: none;
+            color: black;
+        }
+        .list ul li:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    
+<!-- 
+    2d转换transform可以理解为变形
+
+    移动translate  
+
+    注意：
+    定义2d的移动，沿着x和y轴移动
+    最大的特点不会影响其他盒子的位置
+    translate的百分比是相对于自身元素
+    对行内标签没有效果
+
+    移动位置三种方法： 定位 外边距 2d转换移动
+ -->
+    <div class="a"></div>
+    <div class="b"></div>
+
+    <div class="big">
+        <div class="small"></div>
+    </div>
+    <!-- 
+        旋转rotate(度数)
+        度数单位是deg
+        可以顺时针可以是逆时针，正为顺时针
+        默认以元素的中心
+     -->
+     <img class="pic1" src="images/mi-logo.png" alt="">
+
+     <!-- 小三角 -->
+     <div class="d">
+     </div>
+
+     <!-- 转换中心点 
+    transform-origin:x y
+    xy默认是转换中心点是50% 50%
+    可以是像素或者方位词  
+    -->
+    <!-- <div class="f">
+    </div> -->
+
+    <div class="g">
+    </div>
+    <!-- 缩放 scale(x,y)
+        注意: 逗号分隔
+            可以转换中心缩放
+            transform:scale(2,2)放大两倍
+            transform:scale(1,1)放大一倍
+            transform:scale(2)放大两倍 ，同上
+            transform:scale(0.5,0.5)缩小两倍
+     -->
+     <div class="j"></div>
+     <img class="k" src="images/abcd.jpg" alt="">
+
+     <div class="list">
+        <ul>
+            <li><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li><a href="">5</a></li>
+            <li><a href="">6</a></li>
+            <li><a href="">7</a></li>
+        </ul>
+     </div>
+
+     <!-- 转换综合写法
+        1、transform: translate() rotate() scale()等
+        2、顺序会影响效果（先旋转后改变坐标轴）
+        3、同时有位移和其他属性的时候，记得将位移放在最前面
+    -->
+</body>
+</html>

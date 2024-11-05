@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .t {
+            width: 500px;
+            margin: 10px auto;
+        }
+        .t p {
+            text-align: center;
+        }
+        .t table th,
+        .t table td{
+            border: 1px black solid;
+            text-align: center;
+            height: 10px;
+            width: 100px;
+        }
+        .t table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div class="t">
+        <p>订单确认</p>
+    <table>
+        <tr>
+            <th>商品名称</th>
+            <th>商品价格</th>
+            <th>商品数量</th>
+            <th>总价</th>
+            <th>收货地址</th>
+        </tr>
+        <tr>
+            <td id="name"></td>
+            <td id="price"></td>
+            <td id="num"></td>
+            <td id="total"></td>
+            <td id="address"></td>
+        </tr>
+    </table>
+    </div>
+    
+    <script>
+        let name = prompt('商品名称')
+        let price = prompt('商品价格')
+        let num = prompt('商品数量')
+        let address = prompt('商品地址')
+        let total = price * num
+        document.getElementById('name').textContent = name
+        document.getElementById('price').textContent = price
+        document.getElementById('num').textContent = num
+        document.getElementById('total').textContent = total
+        document.getElementById('address').textContent = address
+    </script>
+</body>
+</html>

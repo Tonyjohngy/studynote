@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>meta</title>
+        <!-- 网页定义描述 -->
+        <meta name="description" content="测试">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 默认链接，引入外部样式 -->
+        <link rel="stylesheet" href="E:\vscode code\html\css\styles.css">
+        <!--  搜索引擎关键字-->
+        <meta name="keywords" content="html,css">
+        <!-- 定义网页作者 -->
+        <meta name="author" content="tony">
+        <!-- 刷新时间30秒 -->
+        <meta http-equiv="refresh" content="30">
+
+    </head>
+    <body>
+        <h1>第一个样式测试</h1>
+        <p>这是图片：
+        <img src="E:\vscode code\html\images\html55.png" width="32" height="32" /></p>
+
+        <table border="1">
+            <tr>
+                <td>100</td>
+            </tr>
+        </table>
+
+        <table border="1">
+            <tr>
+                <th>第一周</th>
+                <th>第二周</th>
+                <th>第三周</th>
+            </tr>
+            <tr>
+                <td>100</td>
+                <td>200</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>90</td>
+                <td>150</td>
+                <td>230</td>
+            </tr>
+        </table>
+
+        <!-- 无序列表 -->
+        <ul>
+            <li>coffee</li>
+            <li>milk</li>
+        </ul>        
+        <!-- 有序列表 -->
+        <ol>
+            <li>coffee</li>
+            <li>milk</li>
+        </ol>
+        <!-- 自定义列表 -->
+        <dl>
+            <dt>coffee</dt>
+            <dd>black hot drink</dd>
+            <dt>milk</dt>
+            <dd>white cold drink</dd>
+        </dl>
+        <!-- 区块 -->
+        <div>
+            <span>
+                你好        
+            </span>
+        </div>
+        <!-- 提交表格 -->
+        <form action="" method="get">
+            <p>
+                <label for="username">账户：</label>
+                <input type="text" name="username" id="username">
+            </p>
+            <p>
+                <label for="password">密码：</label>
+                <input type="password" name="password" id="password">
+            </p>
+            <p>
+                <label >性别：</label>
+                <input type="radio" id="male" name="gender" value="male" checked>
+                <label for="male">男</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">女</label>
+            </p>
+            <p>
+                <input type="checkbox" id="sub" name="sub" checked>
+                <label for="sub">订阅推送信息</label>
+            </p>
+            <p>
+                <label for="contry">国家：</label>
+                <select id="contry" name="contry">
+                    <option value="cn">CN</option>
+                    <option value="uk">UK</option>
+                    <option value="usa">USA</option>
+                </select>
+            </p>
+            <p><input type="submit"></p>
+        </form>
+        <button type="button" onclick="myFuntion()">
+            点击
+        </button>
+        <p id="color">变颜色</p>
+        <!-- 脚本 -->
+        <script>
+            function myFuntion(){
+                x=document.getElementById("color");
+                x.style.color = "#ff0000"
+            }
+        </script>
+        
+    </body>
+</html>

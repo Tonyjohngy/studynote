@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1 wxss 样式语言
+
+        wxss和css具有大部分css特征，还有扩展和修改
+        扩展特征： rpx尺寸单位
+                  @import样式的导入
+
+        rpx尺寸单位
+        微信小程序独有
+        原理
+        rpx将所有屏幕的宽度等分750份，即当前屏幕的总宽度为750rpx
+        较小设备就小，大就大，适配屏幕
+
+        rpx和px的换算
+        iPhone6作为标准 1rpx = 0.5px 使用广好换算
+
+        2 样式导入@import
+        @import "/";
+
+        3 全局样式
+        app.wxss中的就是全局样式，作用于每一个页面中
+
+        4 局部样式
+        页面的.wxss，只作用于当前页面
+        当全局和局部冲突时，就近原则，局部样式会覆盖全局样式
+        当局部的权重大于或等于全局才会覆盖，看权重
+
+        实现表格边框
+        小单位右下边框 ，最大单位左上边框
+        
+     -->
+</body>
+</html>

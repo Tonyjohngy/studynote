@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            color: #ac6cc2;
+        }
+    </style>
+</head>
+<body>
+    
+     <script>
+        
+       /*  对象
+        可以理解为无序的数据集合，用于描述有序的数据集合,是引用数据类型
+        包含属性和方法
+
+        属性：对象事物的特征
+        属性都是成对出现 属性名: 属性值,
+        属性名可以用""/''，一般不用，除非是名称有特殊符号（-，空格等）
+
+        方法：对象事物的行为
+        方法分为方法名和函数，以:分割
+        多个属性用,
+        方法名可以用""/''，一般不用，除非是名称有特殊符号（-，空格等）
+
+
+        对象的创建 
+        */
+        let obj1 = new Object()
+        let obj2 = {
+            name : 'zhangsan',
+            sex : 'women',
+            age : 18,
+            'user-name' : 'lili'
+        }
+
+        /* 
+        查询对象属性
+        */
+        console.log(obj2.name); 
+        console.log(obj2['age']); 
+        // 有引号用这个
+        console.log(obj2['user-name']);
+        /* 
+        修改属性
+        */
+        obj2.age = 19
+        console.log(obj2.age);
+        /* 
+        增加属性
+        */
+        obj1.name = 'lala'
+        console.log(obj1.name); 
+        /* 
+        删除属性
+        */
+        delete obj1.name
+        console.log(obj1.name); 
+        /* 
+        遍历对象
+        */
+        for (let i in obj2) {
+            console.log(obj2[i])
+        }
+        /* 
+        内置对象
+        js内部对象，给开发者用
+        document.write()等
+
+        Math
+        random 从0到1之间的随机数（包含0不包括1）
+        round 四舍五入
+        ceil 向上取整
+        floor向下取整
+        max最大值
+        min最小值
+        pow幂运算
+        abs绝对值
+
+        生成0-10随机数
+
+        ps null 类似 let obj ={} 一个空对象
+        */
+        // let d = Math.floor(Math.random() * (10 + 1))
+        // console.log(d)
+        // console.log(Math.random())
+
+        // function r(M,N){
+        //    return  Math.floor(Math.random() * (M - N + 1)) + N
+        // }
+
+        // let ron = r(34,16)
+        // console.log(ron)
+
+        // 随机点名
+        console.log('----------随机点名---------------')
+        // let name = ['赵云','黄忠','关羽','张飞','马超','项羽','刘备']
+        // let i = Math.floor(Math.random() * name.length)
+        // console.log(name[i])
+        // name.splice(i,1)
+        // console.log(name)
+        // 随机数字
+        console.log('----------随机数字---------------')
+        // let n = Math.floor(Math.random() * (10 + 1))
+        // let flag = true 
+        // for (let i = 1;i <= 3;i++){
+        //     let num = +prompt('输入数字：')
+        //     if(n===num){
+        //         flag = false
+        //         alert('right!')
+        //         break
+        //     }else if(n>num){
+        //         alert('猜小了')
+        //     }else {
+        //         alert('猜大了')
+        //     }
+        // }
+        // if(flag){
+        //     alert('次数用完')
+        // }
+        // 随机颜色
+        // console.log('----------随机颜色---------------')
+        // let str = '#'
+        // let arr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
+
+
+        // for (let i = 0; i < 6; i++) {
+        //     let r = Math.floor(Math.random() * arr.length + 1)
+        //     str += arr[r]            
+        // }
+        // console.log(str)
+        // document.write(`<p style="color:${str}" font-size=15px">数字变色</p>`)
+
+        /* 
+        扩展：
+        关键字 let var function if break 有特殊意义的词汇
+        保留字 int short long char  目前没有未来有
+        标识符 变量名、函数名的另一种叫法
+        表达式 能产生可以带有结果
+        语句 一段执行的代码 if() for()
+
+        基本数据类型 存储值
+        引用数据类型 存储引用地址，通过new关键字创建，如Object/Array/Date等
+
+        堆栈区别
+        栈 放简单数据类型
+        堆 放引用数据类型
+
+        变量声明
+        优先选择const
+        const声明需要初始化而且不能修改，要改用let声明，变量存的不是值，而是地址，建议数组和对象使用它
+        通常使用：不变的就用const，变（=重新赋值、运算等）就用let。
+        数组和对象的内容（地址）没变，变的是地址所在的值，除了=重新赋值，地址变了，内容pop,push等不算
+
+
+        */
+
+
+        /* 
+        String
+        length属性
+        charAt() 返回指定索引的字符
+        indexOf() 返回指定内容在字符串出现的位置
+        substring() 截取字符串并返回
+        substr() 截取字符串可指定开始位置，长度
+        */
+       let str = 'ddwafdewafwe'
+       console.log(str.indexOf('a')) 
+       console.log(str.substring(1,4)) 
+       console.log(str.substr(1,4)) 
+       
+     </script>
+</body>
+</html>

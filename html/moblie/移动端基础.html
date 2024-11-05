@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- meta标签
+        width viewport宽度，可以设置device-width特殊值
+        user-scalable=no 允不允许用户去缩放
+        initial-scale 初始的缩放比 数字大于0
+        maximum-scale 最大的缩放比
+        minimum-scale 最小的缩放比
+
+        标准写法
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0 user-scalable=no">
+
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0 user-scalable=no">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        视口
+
+        布局视口
+        固定980px，内容会很小，无法缩放
+
+        视觉视口
+        屏幕大小，要缩放
+
+        理想视口
+        适配手机不用缩放
+
+        meta视口标签
+
+     -->
+
+     <!-- 
+        二倍图
+        物理像素/物理像素比
+        电脑可网页像素是1:1
+        手机会有像素比
+
+        原因：视网膜技术压缩像素，达到更高的分辨率，更丝滑
+
+        多倍图
+        但如果图片放大就会模糊，使用倍图
+
+        背景缩放 
+        background-size : 图片宽度 图片高度
+        只写一个参数，等比例缩放
+        可以是%，相对于父盒子 
+        cover覆盖盒子 宽度或者高度最大覆盖区域，可能有一部分不见
+        contain图片扩展到最大尺寸，适应内容区域，宽度或者高度等比例拉伸，有一个达到覆盖，有一部分空白区域
+
+        可以通过切多倍图，在用contain缩放实现图片的展示
+      -->
+      <!-- 
+        移动端主流方案
+        1、单独制作移动端页面
+        通常m.xxx.com
+
+        2、响应式页面
+        改变样式宽度，花大量精力处理兼容性
+
+       -->
+
+       <!-- 
+        移动端浏览器基本以webkit内核为主
+
+        css初始化 normalize.css
+
+        让不同的浏览器在渲染网页元素的时候形式更统一
+        -->
+
+        <!-- 
+            css3的box-sizing
+            传统css 宽度 = width+border+padding
+            css3 宽度 =  width+包含了border和padding
+            box-sizing:content box 默认 
+            box-sizing:border-box css3 
+            不会撑大盒子
+         -->
+
+         <!-- 
+
+            a标签中加-webkit-tap-highlight-color: transparent;
+            消除移动端点链接会变色
+
+            -webkit-appearance:none;
+            加上这个属性可以自定义按钮和输入框的样式
+
+            -webkit-touch-callout:none
+            禁用长按页面时的弹出菜单
+          -->
+</body>
+</html>

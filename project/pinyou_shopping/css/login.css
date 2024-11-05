@@ -1,0 +1,156 @@
+.login-wrap {
+    height: 485px;
+    background-color: #7e00ff;
+}
+
+.w {
+    position: relative;
+    width: 990px;
+    margin: 0 auto;
+}
+.login-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.login-bg {
+    width: 990px;
+    height: 485px;
+    background:url(../upload/bg.png) no-repeat;
+    background-size: cover;
+    background-position: -390px 0;
+}
+
+
+
+.login-table {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 380px;
+    height: 364px;
+    background-color: #fff;
+}
+
+.login-hd {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 63px;
+}
+
+
+.login-hd a{
+    flex: 1;
+    font-size: 18px;
+    text-align: center;
+}
+
+.tips {
+    height: 27px;
+    width: 300px;
+    margin: 10px auto;
+    font-size: 12px;
+    text-align: center;
+    line-height: 27px;
+    background-color: #fffdee;
+    border: 1px #feeecf solid;
+}
+
+.login-bd div[class$="content"] {
+    display: flex;
+    width: 300px;
+    height: 37px;
+    margin: 0 auto 19px;
+    border: 1px #999 solid;
+}
+
+.login-bd div[class$="content"] input:focus input{
+    border: 1px #3aa2e4 solid;
+}
+
+.login-bd span {
+    display: inline-block;
+    width: 37px;
+    height: 37px;
+}
+
+.login-bd .id-icon {
+    background: url(../images/zh.png) no-repeat;
+    background-size: cover;
+}
+
+.login-bd .pwd-icon {
+    background: url(../images/pwd.png) no-repeat;
+    background-size: cover;
+}
+
+div[class$="content"]>input {
+    flex: 1;
+    padding-left: 2px;
+    display: inline-block;
+    width: 266px;
+    height: 35px;
+    border: 0;
+}
+
+.check {
+    display: flex;
+    width: 300px;
+    height: 30px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+.auto-login {
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+.sub {
+    margin-left: 40px;
+    width: 303px;
+    height: 41px;
+    background-color: #c81623;
+    color: #fff;
+}
+
+.login-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 37px;
+    width: 300px;
+    margin: 18px 38px;
+}
+
+.other-login a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-right: 16px;
+}
+.register {
+    width: 60px;
+    margin-left: 30px;
+    margin-right: 0;
+    text-align: center;
+}
+.qq {
+    background: url(../images/icon1.png) no-repeat;
+    background-size: cover;
+}
+
+.weibo{
+    background: url(../images/icon2.png) no-repeat;
+    background-size: cover;
+}
+.zhifubao {
+    background: url(../images/icon3.png) no-repeat;
+    background-size: cover;
+}
+.weixin {
+    background: url(../images/icon4.png) no-repeat;
+    background-size: cover;
+}

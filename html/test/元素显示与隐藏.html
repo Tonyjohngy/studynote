@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            position: relative;
+            margin: auto;
+            height: 590px;
+            width: 1200px;
+            background-color: aqua;
+        }
+        .a img {
+            width: 100%;
+            height: 100%;
+        }
+        .hezi {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3) url(images/man.jpg) no-repeat center;
+        }
+        .a:hover .hezi{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1、display:none隐藏 隐藏后不占有位置  block显示   
+        2、visibility 可见性  visiible可视 hidden隐藏 隐藏后继续占有空间
+        3、overflow 溢出内容隐藏 visible可视 hidden不可见 scroll滚动 auto需要的时候加滚动条,
+        不超出不加滚动条
+     -->
+     <div class="a">
+        <img src="images/bobao.jpg">
+        <div class="hezi"></div>
+     </div>
+</body>
+</html>

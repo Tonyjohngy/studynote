@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1 数据绑定基本原则
+        1.1 data定义数据
+        1.2 在WXML中使用数据
+
+        Mustache语法格式
+        动态绑定数据，
+        data:{}
+        双大括号语法{{}}
+
+        动态绑定属性
+        {{}}
+        1.3 三元运算
+        ?:
+        算术运算
+
+        2 事件
+        渲染层到逻辑层的通讯方式
+
+        常用事件
+
+        2.1 event回调事件
+        target是触发事件的源头组件(常用)，currentTarget是当前事件所绑定的组件，
+
+        2.2 bindtap的语法格式
+        在小程序不存在onclick事件，通过tap事件来响应用户的触摸
+        1、通过bindtap，可以为组件绑定tap触摸事件
+        2、在页面.js文件定义对应的事件处理函数，通过event(e)来接受
+        加逗号
+
+        2.3 对数据重新赋值
+        this.setData({
+            count:this.data.count+1
+        })
+
+        2.4 事件传参
+        不能在绑定事件的同时为事件处理函数传递参数
+        bindtap(123)是不可以的，会被认为是名字一部分
+        可以用data-* 如data-info={{2}} info是参数名字，2是参数的值
+        event.target.dataset.参数名即可获取具体参数的值
+
+        2.5bindinput的语法格式
+        通过input事件来响应文本框的输入事件语法格式：
+        1、bindinput，可以绑定事件
+
+        2、.js文件来定义事件
+        e.detail.value获取输入的值
+
+        实现文本框和data之间的数据同步
+
+        3 条件渲染
+        1、wx:if="{{condition}}"来判断是否需要渲染该代码
+            也有wx:else不需要加条件 wx:elif
+        <view wx:if="{{condition1}}">1</view>
+        <view wx:elif="{{condition2}}">2</view>
+        <view wx:else">3</view>
+
+        2、结合<block>使用wx:if
+        如果一次性控制多个组件的展示与隐藏，可以使用
+        <block></block>标签将多个组件包装起来
+        <block wx:if={{true}}>
+            <view>1</view>
+            <view>2</view>
+        </block>
+        block并不是一个组件，只是包裹性质容器，不会在页面任何渲染
+
+
+        3、hidden="{{condition}}"控制元素的显示与隐藏
+
+        hidden和wx:if的区别
+        wx:if 以动态创建和移除元素的方式显示和隐藏元素
+        hidden 切换样式（display:none/block）来实现
+        频繁切换用hidden，性能较好
+        控制条件复杂就wx:if
+
+        4 列表渲染
+        4.1 wx:for 可以根据指定的数组循环渲染数组
+        <view wx:for="{{array}}">
+            索引：{{index}}当前项：{{item}}
+        </view>
+
+        wx:for-index=""指定当前循环项的索引变量名
+        wx:for-item=""指定当前循环项的当前项变量名
+
+        wx:key类似于vue列表的:key，小程序在实现列表渲染时，也建议渲染出列表项指定唯一的key值，
+        从而提高渲染的效率
+
+
+         小程序api
+        1 监听事件
+        以on开头，用来监听触发事件
+        2 同步api
+
+        3 异步api
+     -->
+</body>
+</html>

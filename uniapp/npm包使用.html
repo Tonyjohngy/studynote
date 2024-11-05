@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        npm包的限制
+        1 不支持node.js内置库的包
+        2 不支持浏览器内置对象的包
+        3 不支持C++插件的包
+
+        能使用的不多
+
+        Vant Weapp小程序UI组件库使用MIT开源许可协议
+        Vant安装
+        要去除"style":"v2" 去除多余样式，防止样式冲突
+
+        使用css变量定义主题样式
+        1 在app.wxss中写入css变量，对全局生效即可
+        page{
+            --***=#ffffff;
+        }
+
+        API Promise化
+        wx.request({})有很多回调函数
+        安装Promise 
+        后台npm install --save miniprogram-api-promise@1.0.4
+        删除包里miniprogram-api-promise包
+        在构建npm,即可安装完毕
+
+        Promise化
+        // app.js
+            import {promisifyAll} from 'miniprogram-api-promise'
+            const wxp = wx.p = {}
+            promisifyAll(wx,wxp)
+
+        调用Promise化之后的异步api
+        async getInfo(){
+            const {data:res} = await wx.p.request({
+            method:'GET',
+            url:'https://applet-base-api-t.itheima.net/api/get',
+            data:{
+                name:'zs',
+                age:22
+            }
+            })
+            console.log(res)
+        },
+
+        全局数据共享
+        解决组件之间数据共享
+        开发方案：VueX Redux MobX等
+
+        小程序中
+        使用mobx-miniprogram配合mobx-miniprogrambuildings实现全局数据共享
+        mobx-miniprogram创建store实例对象
+
+        //在这个js中专门创建Store的实例对象
+        //在这个js中专门创建Store的实例对象
+        import {observable,action} from 'mobx-miniprogram'
+
+        export const store = observable({
+            // 数据字段
+            numA: 1,
+            numB: 2,
+            // 计算属性 只读
+            get sum(){
+                return this.numA +this.numB
+            },
+            // action函数，专门来修改store中的数据的值
+            updateNum1:action(function (step) {
+                    this.numA += step
+                
+            }),
+            updateNum2:action(function (step) {
+                this.numB += step
+            }),
+        })
+        mobx-miniprogrambuildings用来store中的共享数据或方法绑定到组件或页面中
+
+        页面中
+        import {createStoreBindings} from 'mobx-miniprogram-bindings'
+        import {store} from '../../store/store'
+
+        Page({
+            onLoad(options) {
+                this.storeBindings = createStoreBindings(this,{
+                store,
+                fields:['numA','numB','sum'],
+                actions:['updateNum1']
+            })
+            },
+            onUnload() {
+                卸载
+                this.storeBindings.destroyStoreBindings()
+            },
+        })
+
+
+        绑定组件
+        import {storeBindingsBehavior} from 'mobx-miniprogram-bindings'
+        import {store} from '../../store/store'
+
+        Component({
+
+            storeBindings:{
+                store,
+                fields:{
+                numA:() => store.numA,
+                numB:(store) => store.numB,
+                sum:'sum'
+            },
+            actions:{
+                updateNum2:'updateNum2'
+            }
+        },
+        })
+
+        wxml使用
+        <view>{{numA}}+{{numB}} = {{sum}}</view>
+        <vant-button type="primary" bind:tap="btnHander2" data-step="{{1}}">numB+1</vant-button>
+        <vant-button type="danger" bind:tap="btnHander2" data-step="{{-1}}">numB-1</vant-button>
+
+        安装MboX相关包
+        npm install --save mobx-miniprogram@4.13.2 mobx-miniprogram-bindings@1.2.1
+
+        分包
+        把一个完整的项目那需求划分成不同的子包，构建时打包成不同的分包，用户在使用时按需进行加载
+
+        优点
+        优化小程序首次启动下载时间
+        多团队共同开发更好解耦协作
+
+        分包构成一个主包和多个分包
+        主包：项目的启动页面和tarBar页面，以及所有分包都需要一些公共资源
+        分包：只包含和当前分包有关的页面和私有资源
+
+        分包大小限制
+        整个小程序所有分包不超过20M（主包和所有分包）
+        单个分包/主包大小不超过2M
+
+        配置方法
+        app.json中的
+        subpackages:[
+            {
+                root:"packagesA",
+                pages:[
+                    pages/cat,
+                    pages/dog
+                ]
+            },
+            {
+                root:"packagesB",
+                分包别名
+                name:"pack2"
+                pages:[
+                    pages/cat,
+                    pages/dog
+                ]
+            },
+        ]
+
+        打包原则
+        1 小程序会按subpackages的配置进行打包，之外的目录后背打包到主包
+        2 主包也可以有自己的pages（即外层pages字段）
+        3 tarBar页面必须在主包
+        4 分包之间不能互相嵌套
+
+        引用原则
+        1 主包无法引用分包内的私有资源
+        2 分包之间不能相互引用私有资源
+        3 分包可以引用主包的公共资源
+
+        独立分包
+        一般通过主包进入分包，但独立分包可以分包独立运行
+        区别
+        独立分包可以不依赖主包运行，独立运行
+
+        应用场景
+        普通分包需要下载主包资源才能运行，
+        独立分包不需要，很大程度提高分包页面启动速度
+        一个小程序可有多个独立分包
+
+        配置方法
+        分包配置下
+        "independent":true
+
+        引用原则
+        独立分包和普通分包是相互隔离，不能相互引用彼此的资源
+        1 主包无法引用独立分包资源
+        2 独立分包之间不能相互引用私有资源
+        3 独立分包和普通分包之间不能相互引用私有资源
+        4 特别注意：独立分包不能引用主包的公共资源
+
+        分包预下载
+        进入页面框架自动预下载可能需要的分包
+
+        app.json中，使用preloadRule节点定义分包
+        "preloadRule":{
+            "进入的包":{
+                packages:[
+                    "预载的包"
+                ]
+            },
+            "network":"all",
+
+        }
+
+        预下载的限制同一个包的页面享有共同预下载大小限制2M（分包的总共）
+
+        自定义tarBar
+        步骤
+        1 新建custom-tab-bar，并在文件夹创建组件
+        2 全局app.js的tarBar新增'custom':true 原来list内容不要删除，为了兼容旧版本
+        3 custom-tab-bar.js 中引入mobx共享数据方便开发
+        加入跳转路径list和使用options中添加 styleIsolation:'shared'以便覆盖并调整tarBar的样式
+        在onchange方法中使用wx.switchTab()实现路径跳转 
+        4 通过
+        observers:{
+            'sum':function (val) {
+                this.setData({
+                'list[1].info':val
+                })
+            }
+            实现图标信息红点
+        5 在vant-button标签加上active-color="#999" 改变变化颜色
+     -->
+</body>
+</html>

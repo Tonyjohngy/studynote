@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        编程思想
+        1、面向过程编程
+        按步骤解决问题
+        性能好
+        2、面向对象编程（oop）
+        对象作为划分问题
+        灵活、可复用、好维护和开发，好拓展
+        特性：封装 继承 多态
+        
+        构造函数（封装性）
+        js面向对象通过构造函数实现的封装
+        同样的将变量和函数组合在一起并且通过this实现数据的共享，所不同的是借助构造函数创建出来的实例对象之间互不影响
+        总结
+        1 构造函数体现封装性
+        2 实例化对象互不干扰、互不影响
+        3 但借助于构造函数来实现存在浪费内存的问题
+        名字首字母大写，用this
+
+        原型 prototype
+        构造函数的一个属性
+        这个属性指向另一个对象，被称为原型对象，这个对象可以挂载函数，公共的方法可以挂载这里，共享这些方法，
+        this 构造方法和原型对象的this都指向实例化对象
+        避免内存的浪费
+        */
+       function s(username,age) {
+        this.username = username
+        this.age = age
+       }
+       s.prototype.sing = function () {
+        console.log('lalala');
+       }
+       const one = new s('yiyi',14)
+       const two = new s('erer',17)
+       one.sing()
+       two.sing()
+       /*
+       constructor属性
+       指向原来的构造函数，指向爸爸（继承）
+       使用场景：用于原型以对象的形式赋值
+       覆盖原来构造函数的内容
+       注意：this的是追加，不会覆盖，但这个方法会覆盖原来的方法
+       对象中要逗号隔开，constructor指向原来的函数
+       */
+      function s2(username,age){ 
+      }
+      s2.prototype = {
+        construtor:s2,
+        sing: function () {
+            console.log('xixixi');
+        },
+        yi:function() {
+           console.log('aaaaa'); 
+        }
+      }
+      const third = new s2()
+      third.yi()
+      /*
+      对象原型 __proto__
+      注意：
+      __proto__ 是js非标准属性，是两个下划线
+      和[[prototype]]意义相同
+      用来表达实例对象指向那个原型对象
+      __proto__也有constructor属性指向实例对象的构造函数
+      对象都会有一个属性，访问原型对象属性和方法的一个属性
+      理解构造函数、原型对象（prototype）和对象原型（__proto__）的关系，从哪来到哪去
+      构造函数和原型的this指向实例化对象
+      */
+     console.log(s2 === s2.prototype.construtor);
+     console.log(third.__proto__.construtor === s2.prototype.construtor);
+     /*
+     原型继承
+     封装就是抽取公共部分
+     继承就是继承公共的属性和方法
+      进一步提升代码封装的程度
+      公共属性和方法放置到原型中，作为父类
+     */
+    function Person() {
+        this.eyes=2
+        this.mouth=1
+    }
+    function Man() {
+        this.xy=1
+    }
+    // 通过原型继承Person
+    Man.prototype = Person
+    // 指向原来的构造函数
+    // 不写这行可能会导致一些问题，尤其是在需要检查对象的构造函数时。虽然这不会影响属性和方法的继承
+    Man.prototype.construtor = Man
+    const gogo = new Man()
+    console.log(gogo.xy);
+    /*
+    注意：两个不同实例化对象的原型继承同一个，原型继承要分开写才能使用其独特属性和方法，不然会都有
+    因为在堆中都是同一个对象
+    最终解决方案：使用构造函数，相同结构不同的对象
+    */
+   function Women() {
+    this.xx = 1
+   }
+   Women.prototype = Person
+   Women.prototype.construtor = Women
+   
+   /*
+   原型链
+   访问一个对象的属性和方法时，会找自身有没有这个属性和方法，没有就往上找，由于每个对象都有__proto__属性，找到对应的原型，
+   每个原型都有.constructor属性找到其构造函数，而原型也是对象，也有__proto__属性，就会找到父类的实例对象，
+   到父类去找属性和方法。
+
+   查找规则
+   1 当访问一个对象的属性和方法时，首先查找自身有没有该属性
+   2 如果没有查找他的原型
+   3 如果还没有就会查找原型对象的原型Object
+   4 以此类推一直找到Object为止（null）
+   5 __proto__对象原型的意义就在于对象成员查找机制提供一个方向，或者一条路线
+   6 可以用instanceof运算符检测是否在某对象的原型链上
+   */
+   console.log([1,3,4] instanceof Array);
+    </script>
+</body>
+</html>

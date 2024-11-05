@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* div {
+            width: calc(100%-30px);
+        } */
+        .box1 {
+            width: 300px;
+            height: 20px;
+            border-radius: 20px;
+            margin: 20px auto;
+            background-color: gray;
+        }
+
+        .box2 {
+            width: 50%;
+            height: 100%;
+            border-radius: 20px;
+            background-color: red;
+            transition: all 1s;
+        }
+
+        .box2:hover {
+            width: 100%;
+        }
+
+        .changebox {
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+            margin: 200px auto;
+            overflow: hidden;
+        }
+        .logo1 {
+            font-family: 'icomoon';
+            float: left;
+            font-size: 50px;
+            line-height: 100px;
+        }
+        .logo2 {
+            font-family: 'icomoon';
+            float: left;
+            height: 100%;
+            font-size: 50px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 默认box-sizing: content-box  border-box 不用计算边框不会撑大盒子-->
+
+
+    <!-- 了解：css滤镜 filter:blur(5px) 模糊处理 数值越大越模糊
+            calc函数             width: calc(100%-30px);永远比父类盒子小30px
+: 
+    -->
+
+    <!-- css3过渡 transition: 属性 花费时间 运动曲线 何时开始
+        属性 要变化的css宽高颜色等，所有就all 宽就width
+        花费时间 0.5s
+        运动曲线 默认ease逐渐慢下来  linear 匀速 ease-in 加速
+        何时开始 默认0秒 
+
+        谁做过渡给谁加 多个就逗号相连
+
+    -->
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+
+    <div class="changebox">
+        <div class="logo1"></div>
+        <div class="logo2"></div>
+    </div>
+</body>
+</html>

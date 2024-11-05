@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 内部js
+        书写位置在script标签在body上面
+        通常放在HTML文件底部
+    -->
+    <!-- 外部js
+    <script src="./js/my.js"></script>
+    script标签不能有内容
+    -->
+    <script src="./js/my.js"></script>
+    <!-- 内联
+        直接写在html代码中
+    -->
+
+    <!-- 注释
+    单行和多行
+    //   /**/
+    -->
+    <!-- 
+        结束符
+        可写可不写
+        都写或都不写
+     -->
+
+     <!-- 
+        输出和输入
+
+        文档输出内容
+      -->
+    <script>
+        document.write('11111')
+        document.write('<h1>11111</h1>')
+        // 弹框
+        alert('')
+        // 程序员调试
+        console.log('111')
+        // 弹框输入框
+        prompt('请输入您的名字：')
+    
+        // 变量声明和赋值
+        /* 
+        变量的命名是按照驼峰命名，区分大小写
+        声明变量let var
+        var是旧版不用，用let
+        */
+        let num = 18
+        console.log(num)
+        // 变量更新
+        num = 20
+        console.log(num)
+
+        /* 
+        数组：声明语法：let x = [1,'xx']
+        数组按顺序保存由下标，从0开始，可以存储任何类型数据
+        x.length获取长度
+        */
+        let arr = ['1',1,'s']
+        console.log(arr.length)
+        console.log(arr[2])
+
+        /* 常量 
+            用const声明，不能更改
+            不需要重新重新赋值的用const
+            名字用大写
+        */
+       const PI = 3.14
+       console.log(PI)
+    //    PI = 333  Uncaught TypeError: Assignment to constant variable. at jsday1.html
+
+    /* 数据类型：基本数据类型和引用数据类型
+    基本数据类型：number string null undefined boolean
+    引用数据类型：object对象
+    */
+   /* 
+   number数字类型：正数负数和小数
+   算术运算法：+—-*%/
+   js是弱类型语法复制才知道类型
+   NaN计算错误，不是一个数学
+
+   string类型 '' "" ``
+   用+字符串相连
+   ``反号的用法：`${name}` 可用于字符串拼接 模版字符串
+   \反斜杠转义符后面的符号不编译
+
+
+   布尔类型boolean true false
+
+    未定义类型undefined
+    只声明变量不赋值就是undefined
+    可监测数据类型是不是undefined来判断用户资料有没传递过来
+
+    区别：null已经赋值了
+    对于新建对象，还没创建好可以先给个null
+
+    控制台输出语句
+    在控制台，number和布尔是蓝色，字符串和undefined是灰色
+
+    type of 检测数据类型
+    用法 typeof x typeof (x)
+
+    类型转换
+    ps:prompt获取过来的数据默认是字符创类型
+    隐式转换：系统内部
+    1、+号解析可以转换成数字类型
+    2、任何数字和字符串相加都是字符串
+    显示转换：
+    转数字    Number()转换数字类型，非数字结果为NaN，NaN是number类型非代表数字 parseInt()只保留整数 parseFloat只保留小数 
+    转字符    String()   变量.toString(进制)     
+    
+    
+
+    ps let和const只能声明一次不能多次声明，常量必须const声明
+
+    +号可以将字符型转换数值
+   */
+        let b = '45.1'
+        document.write(Number(b))
+
+        let c = '3.13'
+        document.write(parseInt(c))
+        document.write(parseFloat(c))
+        
+        let d = 12
+        document.write(String(d))
+
+        d.toString()
+
+    /* 
+    主要区别parseInt和Number区别
+        解析行为:
+        parseInt() 只解析字符串的整数部分，忽略小数点后的部分。
+        Number() 会尝试将整个字符串转换为数字，包括小数部分。
+        转换规则:
+        parseInt() 可以从字符串的开头开始解析，直到遇到不能转换为数字的字符为止。
+        Number() 要求整个字符串都能转换为数字，否则返回 NaN。
+        基数支持:
+        parseInt() 支持指定基数（进制），可以解析不同进制的数字字符串。
+        Number() 不支持指定基数，只能解析十进制数字字符串。
+        其他类型转换:
+        Number() 可以转换布尔值、null 和 undefined 等其他类型的值。
+        parseInt() 只能解析字符串。
+    */
+    </script>
+    <!-- 字面量  数值 字符串-->
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <style>
+        .small {
+            width: 50px;
+            height: 50px;
+        }
+        table {
+            border: 2px solid black;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .main {
+            width: 1000px;
+            display: flex;
+        }
+        .red {
+            color: red;
+        }
+        .big {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        .transfrom{
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        .fanyi{
+            display: flex;
+            margin: 0 auto;
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h3>注册</h3>
+
+        姓名：<input v-model="username" type="text"><br>
+        <input type="checkbox" v-model="isChoice">单身<br>
+        性别：<br>
+        <input type="radio" v-model="gender" name="sex" value="1" >男
+        <input type="radio" v-model="gender" name="sex" value="2" >女<br>
+        所在城市：<br>
+        <select v-model="city" >
+            <option value="101">江门</option>
+            <option value="102">北京</option>
+            <option value="103">南京</option>
+        </select>
+        <button @click="register">注册</button>
+
+        <table>
+            <tr>
+                <th>名字</th>
+                <th>数字</th>
+            </tr>
+            <tr v-for="item in list" :key="item.id">
+                <td>{{item.name}}</td>
+                <td>{{item.num}}个</td>
+            </tr>
+        </table>
+        礼物总数：{{getTotal}}<br>
+        姓: <input v-model="xing" class="small"  type="text">+名: <input v-model="ming" class="small"  type="text">= <p>{{fullname}}</p>
+            <button @click="">改名</button>
+        </p>
+        <br><br>
+        <div class="main">
+            <table  cellspacing="0" cellpadding="10">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>科目</th>
+                        <th>成绩</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                <tbody v-if="gradeList.length > 0">
+                    <tr v-for="item in gradeList" :key="item.no">
+                        <td>{{item.no}}</td>
+                        <td>{{item.subject}}</td>
+                        <td :class="{red:item.grade<60 }">{{item.grade}}</td>
+                        <td @click="del(item.no)"><a>删除</a></td>
+                    </tr>
+                </tbody>
+                <tbody v-else>
+                    <tr>
+                        <td colspan="5">
+                            <span>暂无数据</span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <span>总成绩：{{getTotal}} </span> 
+                            <span style="margin-left: 50px;">平均分：{{getPing}}</span>
+                        </td>
+                    </tr>
+                </tfoot>
+
+                
+            </table>
+            <div class="nav">
+                <label  for="sub">科目：</label>
+                <input v-model.trim="subject" name="sub" type="text"><br>
+                <label  for="gra">成绩：</label>
+                <input v-model.number="grade" name="gra" type="text"><br>
+                <button @click="add">添加</button>
+            </div>
+        </div>
+        <select v-model="obj.lang" >
+            <option value="italy">意大利</option>
+            <option value="english">英语</option>
+            <option value="german">德语</option>
+        </select>
+        <div class="fanyi">
+
+            <textarea v-model="obj.word" class="big"></textarea>
+            <textarea v-model="result" class="transfrom"></textarea>
+        </div>
+        
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data: {
+                obj:{
+                    word:'aa',
+                    lang:'italy',         
+                },
+                result:'',
+                timer: null,
+                gradeList:[
+                    {no:1,subject:'语文',grade:88},
+                    {no:2,subject:'数学',grade:58},
+                ],
+                grade:'',
+                subject:'',
+                xing:'',
+                ming:'',
+                username:'',
+                gender:'1',
+                isChoice: false,
+                city:'101',
+                list:[
+                    {id:1,name:'篮球',num:1},
+                    {id:2,name:'足球',num:2},
+                    {id:3,name:'羽毛球',num:4},
+                ]
+            },
+            methods: {
+                register(){
+                    alert(this.username+this.gender+this.isChoice+this.city);
+                },
+                del(id){
+                   this.gradeList = this.gradeList.filter(item=>item.no != id)
+                },
+                add(){
+                    if (!this.subject) {
+                        alert('请输入科目')
+                        return
+                    }
+                    if (typeof this.grade != 'number') {
+                        alert('请输入正确数字')
+                        return
+                    }
+                    this.gradeList.unshift({
+                        no: this.gradeList.length+1,
+                        subject:this.subject,
+                        grade:this.grade
+                    })
+                    this.subject = ''
+                    this.grade = ''
+                }
+            },
+            watch:{
+                obj:{
+                    deep:true,
+                    immediate:true,
+                    handler(newValue){
+                        clearTimeout(this.timer)
+                        this.timer = setTimeout(async ()=>{
+                            const res = await axios ({
+                                url:'https://applet-base-api-t.itheima.net/api/translate',
+                                params:{
+                                    obj:newValue
+                                }
+                            })
+                            this.result = res.data.data
+                        },1000)
+                    }
+                } 
+            },
+            computed: {
+                getTotal(){
+                   return this.list.reduce((sum,item)=>sum +item.num,0)
+                },
+                fullname:{
+                    get(){
+                        return this.xing + this.ming;
+                    },
+                    set(){
+                        
+                    }
+                },
+                getTotal:{
+                    get(){
+                        return this.gradeList.reduce((sum,item)=>sum + item.grade,0)
+                    },
+                    set(){
+
+                    }
+                },
+                getPing:{
+                    get(){
+                        if (this.gradeList.length === 0) {
+                            return 0
+                        }
+                        return (this.getTotal/this.gradeList.length).toFixed(2)
+                    },
+                    set(){
+
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

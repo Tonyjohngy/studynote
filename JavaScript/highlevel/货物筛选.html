@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            overflow: hidden;
+        }
+        .item {
+            float: left;
+            width: 200px;
+            height: 300px;
+            margin: 10px;
+        }
+        .item img{
+            width: 200px;
+            height: 250px;
+        }
+        .header {
+            width: 600px;
+            height: 50px;
+            margin: 5px auto;
+            border: 1px black solid;
+            text-align: center;
+            /* line-height: 50px; */
+        }
+        a {
+            margin-top: 10px;
+            display: inline-block;
+            width: 100px;
+            height: 25px;
+            font-size: 18px;
+            text-decoration: none;
+            border: 1px black solid;
+            cursor: pointer;
+        }
+        a:active, 
+        a:focus{
+            background-color: #999;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a onclick="fil(0,Infinity)" class="degree1">全部</a>
+        <a onclick="fil(0,100)" class="degree2">0-100元</a>
+        <a onclick="fil(100,200)" class="degree3">0-200元</a>
+        <a onclick="fil(300,Infinity)" class="degree4">300元以上</a>
+    </div>
+    <div class="items"></div>
+    <script>
+        const goodsList = [
+      {
+        id: '4001172',
+        name: '称心如意手摇咖啡磨豆机咖啡豆研磨机',
+        price: '289.00',
+        picture: 'https://yanxuan-item.nosdn.127.net/84a59ff9c58a77032564e61f716846d6.jpg',
+      },
+      {
+        id: '4001594',
+        name: '日式黑陶功夫茶组双侧把茶具礼盒装',
+        price: '288.00',
+        picture: 'https://yanxuan-item.nosdn.127.net/3346b7b92f9563c7a7e24c7ead883f18.jpg',
+      },
+      {
+        id: '4001009',
+        name: '竹制干泡茶盘正方形沥水茶台品茶盘',
+        price: '109.00',
+        picture: 'https://yanxuan-item.nosdn.127.net/2d942d6bc94f1e230763e1a5a3b379e1.png',
+      },
+      {
+        id: '4001874',
+        name: '古法温酒汝瓷酒具套装白酒杯莲花温酒器',
+        price: '488.00',
+        picture: 'https://yanxuan-item.nosdn.127.net/44e51622800e4fceb6bee8e616da85fd.png',
+      },
+      {
+        id: '4001649',
+        name: '大师监制龙泉青瓷茶叶罐',
+        price: '139.00',
+        picture: 'https://yanxuan-item.nosdn.127.net/4356c9fc150753775fe56b465314f1eb.png',
+      },
+      {
+        id: '3997185',
+        name: '与众不同的口感汝瓷白酒杯套组1壶4杯',
+        price: '108.00',
+        picture: 'https://yanxuan-item.nosdn.127.net/8e21c794dfd3a4e8573273ddae50bce2.jpg',
+      },
+      {
+        id: '3997403',
+        name: '手工吹制更厚实白酒杯壶套装6壶6杯',
+        price: '99.00',
+        picture: 'https://yanxuan-item.nosdn.127.net/af2371a65f60bce152a61fc22745ff3f.jpg',
+      },
+      {
+        id: '3998274',
+        name: '德国百年工艺高端水晶玻璃红酒杯2支装',
+        price: '139.00',
+        picture: 'https://yanxuan-item.nosdn.127.net/8896b897b3ec6639bbd1134d66b9715c.jpg',
+      }
+    ]
+
+   
+
+    // 过滤筛选
+    const items= document.querySelector('.items')
+    const degree1= document.querySelector('.degree1')
+
+
+    function fil(min ,max) {
+        const filterItems = goodsList.filter(a=>{
+           return max >= parseFloat(a.price) && parseFloat(a.price) >= min          
+        })
+        let str = ''
+        filterItems.forEach(a => {
+            str += `
+            <div class="item">
+                <img src="${a.picture}" alt="">
+                <div class="name">${a.name}</div>
+                <div class="price">${a.price}</div>
+             </div>`
+        });
+        items.innerHTML = str
+    }
+
+    degree1.click()
+
+    </script>
+</body>
+</html>

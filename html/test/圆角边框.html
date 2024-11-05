@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圆角边框</title>
+    <style>
+        .a {
+            height: 300px;
+            width: 300px;
+            background-color: antiquewhite;
+            /* 半径为10的像素圆 数值可以是百分比或者长度 
+            百分比50就是宽度的一般
+            */
+            border-radius: 25%;
+        }
+
+        .b {
+            width: 300px;
+            height: 100px;
+            background-color: gray;
+            border-radius: 50px;
+        }
+
+        .c {
+            width: 300px;
+            height: 100px;
+            background-color: gray;
+            /* 左上开始顺时针 */
+            /* border-radius: 10px 20px 30px 50px; */
+            /* 设置左上角 */
+            border-top-left-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="a"></div>
+    <div class="b"></div>
+    <div class="c"></div>
+</body>
+</html>

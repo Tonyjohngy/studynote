@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 外边距塌陷（Margin Collapse）是CSS中的一种行为，
+        指的是在某些情况下，两个或多个垂直相邻的元素的外边距（margin）会合并
+        成一个单一的外边距，其大小等于这些外边距中的最大值。
+        这种现象通常发生在块级元素之间，但也有一些特殊情况。 -->
+
+        <!-- 
+            解决方法
+            使用内边距（padding）：在父元素上添加内边距，以分隔子元素的外边距。
+
+            使用边框（border）：在父元素上添加边框，以分隔子元素的外边距。
+
+            使用内联块（inline-block）：将子元素的display属性设置为inline-block，这样可以避免外边距塌陷。
+
+            使用BFC（Block Formatting Context）：创建一个新的块级格式化上下文，可以防止外边距塌陷。例如，通过设置overflow: auto或overflow: hidden。
+         -->
+</body>
+</html>

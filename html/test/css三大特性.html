@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css的三大特性</title>
+    <style>
+        /* 行高的继承 */
+        body {
+            font: 12px/1.5 sans-serif;
+        }
+
+        div {
+            /* 子元素继承父元素body行高的文字大小的1.5倍 14*1.5*/
+            font-size: 14px;
+        }
+
+        p {
+            /* 16*1.5 */
+            font-size: 16px;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <!-- 层叠性 
+    样式冲突优先级是就近原则
+    不冲突不会覆盖
+    -->
+    <!--继承性
+    子标签会继承父标签的样式
+    恰当使用可简化代码
+    可以继承
+    text-,font,line- color的标签属性
+    -->
+    <div>111111</div>
+    <p>222222</p>
+
+    <ul>
+        <li>333333</li>
+    </ul>
+    <!-- 优先级
+        通配符和继承权重为0
+        标签选择器1
+        类（伪类）选择器为10
+        id选择器 100
+        行内样式表 1000
+        !important 无穷大
+
+        父元素继承过来的元素样式最低
+        a默认设定一个样式，最好自定义一个，不然会执行浏览器默认样式
+
+        复合选择器会有权重叠加，但不会进位
+     -->
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mian {
+            width: 300px;
+            margin: 20px auto;
+        }
+        #sub {
+            display: block;
+            margin-top: 10px;
+        }
+        .tips {
+            width: 180px;
+            height: 40px;
+            font-size: 12px;
+            line-height: 40px;
+            padding-left: 12px;
+            color: black;
+            background-color: aquamarine;
+            border-radius: 12px;
+        }
+        p {
+            font-size: 12px;
+            color: #999;
+            margin: 6px;
+        }
+        input[type=submit]{
+            width: 40px;
+            height: 23px;
+            font-size: 12px;
+            background-color: rgb(0, 115, 255);
+            color: aliceblue;
+            border-radius: 6px;
+            border: 1px rgb(0, 115, 255) solid ;
+            cursor: pointer;
+        }
+    </style>
+    <script src="./jq/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="mian">
+        <h3>欢迎-登陆</h3>
+        <div class="tips"></div>
+        <p>账号名</p>
+        <input type="text" name="" id="id">
+        <p>密码</p>
+        <input type="password" name="" id="pwd">
+        <input id="sub" type="submit" value="登录">
+    </div>
+    <script>
+        var id = $('#id')
+        var pwd = $('#pwd')
+        var sub = $('#sub')
+        var tips = $('.tips')
+
+        function tipsDisplay(msg,isSuccess){
+            tips.addClass('show')
+            tips.html(msg)
+            const bgStyle = isSuccess ? 'alert-success':'alert-danger'
+            tips.addClass(bgStyle)
+
+            setTimeout(() => {
+                tips.removeClass('show')
+                tips.removeClass(bgStyle)
+            }, 2000);
+        } 
+
+        // 点击提交
+        sub.click(() => {
+            //验证密码
+            if (id.val().length < 8 || !(/^[a-zA-Z0-9]+$/.test(id.val()))) {
+                tipsDisplay('账号名必须大于等于8位',false)
+            }
+            // 验证用户名
+            if (pwd.val().length < 8 ) {
+                tipsDisplay('密码必须大于等于8位',false)
+            }
+            if(validateForm()){
+                axios({
+                    url:'http://hmajax.itheima.net/api/login',
+                    method:'POST',
+                    data:{
+                        username: id.val(),
+                        password: pwd.val()
+                    }
+                }).then((result) => {
+                    tipsDisplay(result.response.data.message,true)
+                    console.log(result);
+                }).catch((err) => {
+                    tipsDisplay(err.response.data.message,false)
+                    console.log(err.response.data.message);
+                });
+            }       
+        })
+
+        
+        
+    </script>
+</body>
+</html>

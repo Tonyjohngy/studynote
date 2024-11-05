@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    省份名字：<input class="pro" type="text">
+    城市名字：<input class="city" type="text">
+    <button class="check">查询</button>
+    地区列表：
+    <ul class="my-p"></ul>
+
+    <button class="register">注册</button>
+    <!-- 引入数据库 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // 使用
+        document.querySelector('.check').addEventListener('click', function () {
+            let p = document.querySelector('.pro').value
+            let c = document.querySelector('.city').value
+            axios({
+                // 接口
+                url:'http://hmajax.itheima.net/api/area',
+                // 参数
+                params:{
+                    pname : p,
+                    cname : c
+                }
+            }).then((result) => {
+                let list = result.data.list
+                let li = list.map((areaName)=>{
+                return `<li class="liil">${areaName}</li>`
+            })
+                console.log(li);
+                document.querySelector('.my-p').innerHTML = li
+                // 错误处理
+                        }).catch((err) => {
+                console.log('error');
+            });
+        })
+        // get 获取数据 post 提交数据 put 修改全部 delete patch修改部分
+        document.querySelector('.register').addEventListener('click', function () {
+            axios({
+                url: 'http://hmajax.itheima.net/api/register',
+                method: 'post',
+                // 提交数据
+                data: {
+                    username: 'lili',
+                    password: '13435'
+                }
+            }).then((result) => {
+                console.log(result);
+            }).catch((err) => {
+
+            });
+        })
+        //http请求报文   浏览器按照http协议要求格式返回内容给服务器
+        // 请求行
+        // 请求头 请求体 网络查看
+        
+        // 响应报文 服务器返回浏览器的信息
+        // 请求行（状态行） 协议 http响应状态码 状态信息 请求是否成功 1** 信息 2**成功 3**重定向信息 4**客户端错误 5**服务端错误
+        // 响应头 以键值对格式携带信息 JSON
+        // 空行 分割响应头
+        // 响应体 返回资源
+
+        // 接口文档 描述接口的文章
+    </script>
+</body>
+</html>

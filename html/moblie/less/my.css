@@ -1,0 +1,17 @@
+body {
+  background-color: pink;
+}
+.header {
+  width: 200px;
+  height: 300px;
+  background-color: aqua;
+}
+.header a {
+  background-color: bisque;
+}
+.header a:hover {
+  background-color: #999;
+}
+.header a::after {
+  content: '';
+}

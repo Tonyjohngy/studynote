@@ -1,0 +1,205 @@
+ /* 注册模块 */
+ .w {
+    width: 1200px;
+    margin: 0 auto;
+ }
+
+
+.header {
+    height: 82px;
+    border-bottom: 1px solid #b1191a;
+}
+
+.logo {
+    float: left;
+    line-height: 82px;
+}
+
+.registerarea {
+    margin-top: 21px;
+    height: 520px;
+}
+.box_hd {
+    height: 43px;
+    background-color: #ececec;
+    padding: 11px;
+}
+
+.box_hd h4 {
+    float: left;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.box_hd h3 {
+    float: right;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.box_hd a {
+    float: right;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #c81623;
+}
+
+.box_bd {
+    width: 600px;
+    margin: 50px auto 0;
+}
+
+
+.box_bd ul li {
+    padding-bottom: 21px;
+    font-size: 13px;
+}
+
+.box_bd ul li label {
+    display: inline-block;
+    width: 88px;
+    text-align: right;
+}
+
+.error_icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background: url(../images/xx.png) no-repeat;
+    margin-left: 2px;
+}
+.safe {
+    margin-left: 140px;
+}
+
+.ruo {
+    background-color: #c81623;
+    padding: 0 10px;
+}
+.zhong {
+    background-color: #ffff01;
+    padding: 0 10px;
+}
+.qiang {
+    background-color: #51ff00;
+    padding: 0 10px;
+}
+
+ 
+.inp {
+    width: 240px;
+    height: 37px;
+    border: 1px solid #ccc;
+}
+
+.cbox {
+    margin-left: 96px;
+    padding-left: 95px;
+}
+
+.cbox {
+    vertical-align: middle;
+}
+
+.xieyi {
+    color: #aed6f4;
+}
+
+.btn {
+    width: 200px;
+    height: 34px;
+    background-color: #c81623;
+    color: #ffff;
+    text-align: center;
+    line-height: 1.5;
+    margin: 30px 0 0 70px;
+}
+
+ /*  footer页面底部模块 */
+ .footer {
+     background-color: #f5f5f5;
+     height: 415px;
+     width: 100%;
+     padding-top: 30px;
+ }
+
+ .mod_service {
+     height: 80px;
+     border-bottom: 1px solid #ececec;
+ }
+
+
+ .mod_service ul li {
+     float: left;
+     width: 240px;
+     height: 50px;
+     padding-left: 37px;
+ }
+
+ .mod_service ul li h5 {
+     float: left;
+     height: 54px;
+     width: 54px;
+     background: url(../images/icons.png) no-repeat -250px 0;
+     margin-right: 8px;
+ }
+
+
+ .mod_service h4 {
+     padding: 6px 0;
+     float: left;
+     font-size: 14px;
+ }
+
+ .mod_service p {
+     float: left;
+ }
+
+ .mod_help {
+     height: 194px;
+     padding-top: 21px;
+     border-bottom: 1px solid #ececec;
+ }
+
+
+ .mod_help dl {
+     float: left;
+     margin: 0 112px 0 50px;
+ }
+
+ .mod_help dl:last-child {
+     float: left;
+     margin: 0 38px 0 50px;
+     text-align: center;
+ }
+
+ .mod_help dt {
+     font-size: 18px;
+ }
+
+ .mod_help dt a {
+     font-size: 12px;
+ }
+
+ .mod_help dl dd img {
+     margin: 12px 0;
+ }
+
+ /*  */
+ .mod_copyright {
+     text-align: center;
+     padding-top: 20px;
+ }
+
+ .links {
+     margin-bottom: 10px;
+ }
+
+ .links a {
+     margin: 0 3px;
+ }
+
+ .copyright {
+     line-height: 20px;
+ }

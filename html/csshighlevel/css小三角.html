@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            height: 0;
+            width: 0;
+            border-top: 10px solid #000;
+            border-left: 10px solid gold;
+            border-right: 10px solid green;
+            border-bottom: 10px solid red;
+
+        }
+
+        .box2 {
+            height: 0;
+            width: 0;
+            border: 10px solid transparent;
+            border-top-color: pink;
+        }
+
+        .box3 {
+            position: relative;
+            height: 300px;
+            width: 200px;
+            background-color: aqua;
+        }
+        .tri {
+            position: absolute;
+            top: -19px;
+            right: 15px;
+            /* 为照顾兼容性 */
+            line-height: 0;
+            font-size: 0;
+            height: 0;
+            width: 0;
+            border: 10px solid transparent;
+            border-bottom-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3">
+        <div class="tri"></div>
+    </div>
+</body>
+</html>

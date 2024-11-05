@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        .banner {
+            margin: 10px auto;
+            height: 300px;
+            width: 500px;
+            padding: 5px;
+            background-color: antiquewhite;
+        }
+        .title {
+            overflow: hidden;
+        }
+        img {
+            height: 250px;
+            width: 100%;
+            background-size: 500px auto;
+        }
+        .title h3{
+            width: 100px;
+            height: 30px;
+            float: left;
+        }
+        ul {
+            margin-top: 10px;
+        }
+        ul li {
+            float: left;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #999;
+            margin-left: 5px;
+        }
+/* 
+        ul li:hover {
+            background-color: #fff;
+
+        } */
+        span {
+            width: 20px;
+            height: 20px;
+            background-color: rgba(94, 94, 94,1);
+            float: right;
+            margin: 5px;
+            text-align: center;
+            line-height: 20px;
+        }
+        span:hover {
+            background-color: rgba(94, 94, 94,0.6);
+        }
+        .active {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img src="images/pc1.jpg" alt="">
+        <div class="title">
+            <h3>11111</h3>
+            <div>
+                <ul class="dot">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <span class="next">&gt;</span>
+            <span class="prev">&lt;</span>    
+        </div>
+    </div>
+    <script>
+        const data = [
+            {url: './images/pc1.jpg',title: '11111',color: 'rgb(100,67,68)'},
+            {url: './images/pc2.jpg',title: '22222',color: 'rgb(45,67,68)'},
+            {url: './images/pc3.jpg',title: '33333',color: 'rgb(31,67,68)'},
+            {url: './images/pc4.jpg',title: '44444',color: 'rgb(24,67,68)'},
+            {url: './images/pc5.jpg',title: '55555',color: 'rgb(99,67,114)'},
+        ]
+        
+        const img = document.querySelector('.banner img')
+        const banner = document.querySelector('.banner')
+        const title = document.querySelector('.banner .title h3')
+        const tt = document.querySelector('.banner .header')
+        const prev = document.querySelector('.banner .prev')
+        const next = document.querySelector('.banner .next')
+        // 第几个
+        let i = 0
+
+
+        function toggle() {
+            img.src = data[i].url
+            title.innerHTML = data[i].title
+            banner.style.backgroundColor = data[i].color
+            document.querySelector('.active').classList.remove('active')
+            document.querySelector(`li:nth-child(${i+1})`).classList.add('active')
+        } 
+
+        
+        let sliper = setInterval(function(){
+                next.click()
+            },1000)
+
+
+        next.addEventListener('click',function () {
+            i++
+            i = i > data.length - 1 ? 0:i
+            toggle()
+        })
+        prev.addEventListener('click',function () {
+            i--
+            i = i <= 0 ? data.length - 1 :i
+            toggle()
+        })
+        
+       
+
+        banner.addEventListener('mouseenter',function() {
+            clearInterval(sliper)
+        })
+
+        banner.addEventListener('mouseleave',function() {
+           if (sliper)clearInterval(sliper)
+           sliper = setInterval(function () {
+                next.click()
+           },1000)
+        })
+    </script>
+</body>
+</html>

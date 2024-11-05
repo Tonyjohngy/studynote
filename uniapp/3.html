@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+  1 onLoad(options) 
+  2 上拉刷新
+  3 下拉加载
+  4 价格闪烁的问题 没获取数据，先渲染了结构 
+  5 vuex  store.js
+  6 图片 img => display:block
+  7@/store/store.js和./store/store.js
+  8      this.commit('my_cart/saveToStorage')
+  9  watch 复习 handler immediate
+  10 onShow
+11 <view class="address-choose-box" v-if="JSON.stringify(address) === '{}'">
+  <button type="primary" size="mini" class="btnChooseAddress">请选择收货地址+</button>
+</view>
+
+为什么要转换为 JSON 字符串
+对象比较问题：
+在 JavaScript 中，直接比较两个对象（如 {} === {}）会返回 false，
+因为它们是不同的引用。即使两个对象的内容相同，它们的引用不同，所以不能直接比较。
+JSON 字符串化：
+通过将对象转换为 JSON 字符串，可以比较它们的字符串表示形式。空对象 
+{} 转换为 JSON 字符串后是 "{}"，这样就可以通过字符串比较来判断对象是否为空。
+ -->
+</body>
+</html>

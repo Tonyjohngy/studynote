@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字体</title>
+    <style>
+        .h2 {
+            font-family: '微软雅黑';
+            /* 像素大小，默认浏览器16像素 通常body标签设置  */
+            font-size: 16px;
+        }
+        .p {
+            /* 多个字体用引号，逐一识别，没有的往后 */
+            font-family: 'Microsoft YaHei' ,Arial, Helvetica, sans-serif;
+        }
+        /* 字体加粗 */
+        .both {
+            /* font-weight: bold;   700加粗 400normal */
+            font-weight: 700;
+        }
+        .ppp {
+            font-style: italic;
+        }
+        em {
+            font-style: normal;
+        }
+        /* 复合属性 */
+        /* font: font-style font-weight font-size/line-height font-family */
+        .cc {
+            font: italic 700 16px 'Microsoft yahei';
+            /* 其中font-size/line-height font-family不能省略 而且不能更换属性 */
+        }
+
+        .under {
+            text-decoration: underline;
+        }
+        .none {
+            text-decoration: none;
+        }
+        .over {
+            text-decoration: overline;
+        }
+        .lt {
+            text-decoration: line-through;
+        }
+        /* 缩进 */
+        p {
+            /* text-indent: 20px; */
+            /* 根据文字大小，2个文字大小缩进 */
+            text-indent: 2em;
+        }
+        /* 行间距：文字高度、上间距、小间距 */
+        .lh {
+            line-height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="h2">微软雅黑</div>
+    <div class="p">Microsoft YaHei</div>
+    <div class="both">数字加粗</div>
+    <div class="ppp">斜体</div>
+    <em>不斜体</em>
+    <div class="cc">复合属性</div>
+    <div class="under">123</div>
+    <div class="none">123</div>
+    <div class="over">123</div>
+    <div class="lt">123</div>
+
+    <p>成都skiv你费尽口舌VB给发吧你啦估计看吧</p>
+    <div class="lh">中国人</div>
+</body>
+</html>

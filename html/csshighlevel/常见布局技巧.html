@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ul li {
+            float: left;
+            margin-left: -1px;
+            width: 40px;
+            height: 80px;
+            border: 1px solid red;
+            list-style: none;
+
+        } */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            margin: 50px auto;
+            width: 250px;
+            height: 230px;
+            background-color: antiquewhite;
+        }
+        img {
+            float: left;
+            height: 200px;
+            width: 200px;
+        }
+
+        
+
+        .b {
+            width: 1000px;
+            margin: 100px auto;
+        }
+        .b a {
+            display: inline-block;
+            height: 36px;
+            width: 36px;
+            font-size: 14px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 36px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .b .prev,
+        .b .next{
+            width: 85px;
+        }
+        
+        .b input {
+            width: 30px;
+            height: 30px;
+        }
+
+        .b button {
+            height: 36px;
+            width: 36px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        1、margin负值消除两个边框叠加
+      -->
+<!-- 
+    <ul>
+        <li></li>
+        <li></li>
+    </ul> -->
+    <!-- 文字环绕图片 -->
+    <div class="box">
+        <img src="images/abcd.jpg" alt="#">
+        反而你看见狗头人开了个黄桃罐头得到反馈
+    </div>
+
+    <!-- 行内块巧妙 -->
+    <div class="b">
+        <a class="prev" href="">&lt;&lt;上一页</a>
+        <a class="current" href="">1</a>
+        <a href="">2</a>
+        <a href="">3</a>
+        <a class="epl" href="">...</a>
+        <a href="">9</a>
+        <a href="">10</a>
+        <a class="next" href="">&gt;&gt;下一页</a>
+        跳转到  <input type="text">  页
+        <button>确定</button>
+    </div>
+
+
+
+
+</body>
+</html>

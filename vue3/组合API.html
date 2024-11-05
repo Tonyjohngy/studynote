@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- vue3
+      
+      1 vue-cli 创建项目 node16以上
+      创建项目
+      npm init vue@latest
+
+      不唯一根元素
+      js模块化 封装化
+
+      基于vite
+
+      setup选项
+      setup(){}
+      执行时间比created还早，所以没有this ，是整个环境
+      在 setup函数中this不指向组件实例 ，所以在组合式开发中不要使用this。
+      这是因为setup执行较早，早到组件实例还没创建出来，所以setup里面的this是undefined。
+
+      setup(){
+      const message = 'this is message'
+      const logMessage = ()=>{
+        console.log(message)
+      }
+      // 必须return才可以在template中使用
+      return {
+        message,
+        logMessage
+      }
+    }
+
+    语法糖
+    <script setup>
+      const message = 'this is message'
+      const logMessage = ()=>{
+        console.log(message)
+      }
+    </script>
+
+
+      组合式API - 
+      1 reactive和ref函数
+      都是实现响应式数据
+      接受对象类型数据的参数传入并返回一个响应式的对象
+      reactive 只能是复杂类型，不能是简单类型
+      ref使用更广，可以复杂也可以简单，他的复杂类型底层也是reactive
+
+      ref(0)  
+      ref({
+        info:{
+          name:'lili',
+          age:12
+        }
+      })
+
+      2 computed 计算属性  
+      要有返回值
+      const number = computed(() => {
+      return count.value.filter(x=>x>5)
+    })
+      3 watch 监听器
+      监视单个
+      watch(count,(newValue,oldValue)=>{})
+      监视多个 
+      watch([age,name],([newAge,newName],[oldAge,oldName])=>{})
+      深度监视  {deep:true}
+      监视渲染后执行一次  {immediate:true}
+
+      4 vue3生命周期的钩子函数
+      setup => onBeforeMount => onMounted => onBeforeUpdate => onUpdated =>onBeforeUnmount 
+      => onUnmounted 
+      和vue2主要差别是 setup 替代了beforeCreated created
+      其他加了on
+      
+      导入并使用函数
+      import {onMounted} from 'vue' 
+      可执行多次函数
+      5 父子通信
+      defineProps
+      defineEmits
+      
+      6 跨级通信
+      provide
+      inject
+      只能父传子
+
+      7 模型引用
+      ref
+      需要defineExpose
+
+      8 defineOption
+
+      9 defineModel
+
+      10 Pinia
+      
+      -->
+</body>
+</html>
